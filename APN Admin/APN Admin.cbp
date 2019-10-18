@@ -32,6 +32,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="MatchList.cpp" />
+		<Unit filename="MatchList.h" />
+		<Unit filename="Players.cpp" />
+		<Unit filename="Players.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

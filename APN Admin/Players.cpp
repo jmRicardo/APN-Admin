@@ -41,9 +41,10 @@ bool checkPlayer(char playerNick[]){            /// recorre el archivo lo buscar
     Player aux;
     bool flag = true;
     if (archi){
-        while (fread(&aux, sizeof(Player), 1, archi)>0 && !flag)
+        while (fread(&aux, sizeof(Player), 1, archi)>0 && flag)
         {
-           flag = (strcmpi(aux.nick,playerNick)) ? false : true;
+           if (!strcmpi(aux.nick,playerNick))
+            flag = false;
         }
     }
     fclose(archi);
@@ -54,7 +55,7 @@ void printPlayer(Player p)
 {
     std::cout << p.idPlayer << std::endl;
     std::cout << p.nick << std::endl;
-    std::cout << p.active << std::endl;
+    //std::cout << p.active << std::endl;
 }
 
 void printFilePlayers()
