@@ -72,3 +72,67 @@ void printFilePlayers()
     }
 
 }
+
+nodoGameList * inicLista(){
+    return NULL;
+}
+
+nodoGameList * createNodo(GameList dato){
+    nodoGameList * aux = (nodoGameList*)malloc(sizeof(nodoGameList));
+    aux->dato = dato;
+    aux->siguiente = NULL;
+    return aux;
+}
+
+nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo){
+    nuevoNodo->siguiente = lista;
+    return nuevoNodo;
+}
+
+nodoGameList * searchLastNodo(nodoGameList * lista){
+    nodoGameList * aux = lista;
+    if (aux){
+        while (aux->siguiente){
+            aux = aux->siguiente;
+        }
+    }
+    return aux;
+}
+
+nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){
+    if (lista == NULL){
+        lista = nuevoNodo;
+    }else{
+        nodoGameList * aux = searchLastNodo(lista);
+        aux->siguiente = nuevoNodo;
+    }
+    return lista;
+}
+
+int addCell(cell adl[], int dim){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

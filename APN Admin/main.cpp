@@ -3,6 +3,7 @@
 
 int main()
 {
+    cell adl[30];
     loadPlayer("EnriquePinty");
     loadPlayer("AdrianBarba");
     loadPlayer("JoaquinAlvarez");
