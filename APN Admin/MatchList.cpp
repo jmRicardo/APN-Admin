@@ -1,6 +1,7 @@
 #include "MatchList.h"
+#include "Players.h"
 
-int searchLastMatch(){
+int searchLastMatch(){   ///funcion que devuelve el id de la ultima partida jugada
     int id = 0;
     GameList aux;
     FILE * archi = fopen("MatchFile.dat", "rb");
@@ -14,7 +15,7 @@ int searchLastMatch(){
     return id;
 }
 
-void initMatch(Player one, Player two){
+void initMatch(Player one, Player two){   ///funcion que inicia una partida
     GameList aux;
     int id = searchLastMatch();
     FILE * archi = fopen("MatchFile.dat", "ab");
@@ -29,13 +30,13 @@ void initMatch(Player one, Player two){
     }
 }
 
-void printScore(scorePLayer score){
+void printScore(scorePLayer score){   ///funcion que muestra un solo Score
     std::cout << "idPlayer: " << score.idPlayer << std::endl;
     std::cout << "Match Time : " << score.matchTime << std::endl;
     std::cout << "Score Time: " << score.scoreTime << std::endl;
 }
 
-void printMatch(GameList match){
+void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
     std::cout << "idMatch: " << match.idMatch << std::endl;
     printScore(match.player1);
     printScore(match.player2);
@@ -46,18 +47,18 @@ void printMatch(GameList match){
     }
 }
 
-void printMatchFile(){
+void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas jugadas
     GameList aux;
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
-        while ((&aux, sizeof(GameList), 1, archi) > 0){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             printMatch(aux);
         }
         fclose(archi);
     }
 }
 
-Player traeme(){
+Player traeme(){  ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
@@ -66,7 +67,7 @@ Player traeme(){
     return aux;
 }
 
-Player traemeotro(){
+Player traemeotro(){   ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
