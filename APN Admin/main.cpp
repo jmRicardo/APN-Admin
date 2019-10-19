@@ -4,7 +4,7 @@
 int main()
 {
     cell adl[30];
-    loadPlayer("EnriquePinty");
+    /*loadPlayer("EnriquePinty");
     loadPlayer("AdrianBarba");
     loadPlayer("JoaquinAlvarez");
     //printFilePlayers();
@@ -12,7 +12,9 @@ int main()
     Player aux2 = traemeotro();
 
     initMatch(aux1, aux2);
-    printMatchFile();
+    printMatchFile();*/
+    int validos = fromFileToArray(adl, 30);
+    printArrayOfPlayers(adl, validos);
 
     return 0;
 }

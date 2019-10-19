@@ -13,7 +13,6 @@ typedef struct
     int scoreTime;
 }scorePLayer;
 
-
 typedef struct _GameList
 {
     int idMatch;
@@ -48,8 +47,8 @@ nodoGameList * createNodo(GameList dato);
 nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo);
 nodoGameList * searchLastNodo(nodoGameList * lista);
 nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo);
-int addCell(cell adl[], int dim);
-
+int fromFileToArray(cell adl[], int dim);
+void printArrayOfPlayers(cell adl[], int cant);
 
 
 
