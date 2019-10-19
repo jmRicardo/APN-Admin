@@ -23,6 +23,17 @@ typedef struct _GameList
     //struct _Gamelist * nextGame;
 }GameList;
 
+typedef struct _nodoGameList
+{
+    GameList dato;
+    struct _nodoGameList * siguiente;
+}nodoGameList;
+
+typedef struct{
+    Player dato;
+    nodoGameList * lista;
+}cell;
+
 void initMatch(Player one, Player two);
 int searchLastMatch();
 void saveMatch(bool whoWon);
@@ -32,6 +43,12 @@ void printMatch(GameList match);
 void printMatchFile();
 Player traeme();
 Player traemeotro();
+nodoGameList * inicLista();
+nodoGameList * createNodo(GameList dato);
+nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo);
+nodoGameList * searchLastNodo(nodoGameList * lista);
+nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo);
+int addCell(cell adl[], int dim);
 
 
 
