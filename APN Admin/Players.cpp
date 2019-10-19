@@ -110,7 +110,7 @@ nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){
 }
 
 int addCell(cell adl[], int dim){
-
+    int i = 0;
 }
 
 
