@@ -112,8 +112,37 @@ nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){
     return lista;
 }
 
-int addCell(cell adl[], int dim){
+int fromFileToArray(cell adl[], int dim){
+    Player aux;
     int i = 0;
-    int j = 0;
+    FILE * archi = fopen("players.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(Player), 1, archi) > 0){
+            adl[i].dato = aux;
+            i++;
+        }
+    }
+    return i;
 }
+
+void printArrayOfPlayers(cell adl[], int cant){
+    int i = 0;
+    for (i=0; i<cant; i++){
+        printPlayer(adl[i].dato);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -51,14 +51,14 @@ bool checkPlayer(char playerNick[]){            /// recorre el archivo lo buscar
     return flag;
 }
 
-void printPlayer(Player p)
+void printPlayer(Player p)  ///funcion auxiliar que imprime un player por pantalla (con o sin el active)
 {
     std::cout << p.idPlayer << std::endl;
     std::cout << p.nick << std::endl;
     //std::cout << p.active << std::endl;
 }
 
-void printFilePlayers()
+void printFilePlayers()   ///imprime por pantalla todos los players desde el archivo
 {
     FILE * archi = fopen("players.dat","rb");
     Player aux;
@@ -76,8 +76,6 @@ void printFilePlayers()
 
 
 
-
-puto facundo
 
 
 
