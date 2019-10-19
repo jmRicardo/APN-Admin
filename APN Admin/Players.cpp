@@ -87,8 +87,3 @@ void printFilePlayers()   ///imprime por pantalla todos los players desde el arc
 
 
 
-
-
-
-
-

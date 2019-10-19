@@ -47,8 +47,10 @@ nodoGameList * createNodo(GameList dato);
 nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo);
 nodoGameList * searchLastNodo(nodoGameList * lista);
 nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo);
+nodoGameList * searchNodoForIdPlayer(nodoGameList * lista);
 int fromFileToArray(cell adl[], int dim);
 void printArrayOfPlayers(cell adl[], int cant);
+void listaToArrayOfPlayers(cell adl[], int cant);
 
 
 

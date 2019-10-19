@@ -102,7 +102,7 @@ nodoGameList * searchLastNodo(nodoGameList * lista){
     return aux;
 }
 
-nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){
+nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){   ///añade al final de la lista
     if (lista == NULL){
         lista = nuevoNodo;
     }else{
@@ -112,7 +112,15 @@ nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo){
     return lista;
 }
 
-int fromFileToArray(cell adl[], int dim){
+nodoGameList * searchNodoForIdPlayer(nodoGameList * lista, int idPlayer){   ///busca un nodo que tenga un id igual al enviado
+    nodoGameList * aux = lista;
+    while (aux && aux->dato.player1.idPlayer != idPlayer){
+        aux = aux->siguiente;
+    }
+    return aux;
+}
+
+int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo los players
     Player aux;
     int i = 0;
     FILE * archi = fopen("players.dat", "rb");
@@ -121,18 +129,43 @@ int fromFileToArray(cell adl[], int dim){
             adl[i].dato = aux;
             i++;
         }
+        fclose(archi);
     }
     return i;
 }
 
-void printArrayOfPlayers(cell adl[], int cant){
+void printArrayOfPlayers(cell adl[], int cant){   ///imprime por pantalla el arreglo de players
     int i = 0;
     for (i=0; i<cant; i++){
         printPlayer(adl[i].dato);
     }
 }
 
+int searchPosInArray(cell adl[], int cant, int idPlayer){   ///busca la posicion de un player en el arreglo
+    int pos = -1;
+    int i = 0;
+    while (i < cant && pos == -1){
+        if (adl[i].dato.idPlayer == idPlayer){
+            pos = i;
+        }
+        i++;
+    }
+    return pos;
+}
 
+void listaToArrayOfPlayers(cell adl[], int cant){
+    GameList aux;
+    int i = 0;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            nodoGameList * helper = createNodo(aux);
+            i = searchPosInArray(adl, cant, helper->dato.player1.idPlayer);
+            adl[i].lista = addToBeginning(adl[i].lista, helper);
+        }
+        fclose(archi);
+    }
+}
 
 
 
