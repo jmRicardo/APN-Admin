@@ -77,8 +77,6 @@ void printFilePlayers()
 
 
 
-puto facundo
-
 
 
 
