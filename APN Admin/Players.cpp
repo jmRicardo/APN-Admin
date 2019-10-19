@@ -117,9 +117,7 @@ int addCell(cell adl[], int dim){
 
 
 
-
-
-
+puto facu
 
 
 
