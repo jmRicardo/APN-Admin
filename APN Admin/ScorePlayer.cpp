@@ -29,7 +29,20 @@ NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato){
     return tree;
 }
 
+NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato->idPlayer){
 
+NodoScorePLayerTree * reply = NULL;
+    if(tree){
+        if(dato->idPlayer == tree->dato.idPlayer)
+            reply = tree;
+        else
+            if(dato->idPlayer > tree->dato.idPlayer)
+                reply = searchTree(tree->derecha, dato);
+            else
+                reply = searchTree(tree->izquierda, dato);
+}
+return reply;
+}
 
 
 

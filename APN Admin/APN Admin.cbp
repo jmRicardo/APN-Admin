@@ -36,6 +36,8 @@
 		<Unit filename="MatchList.h" />
 		<Unit filename="Players.cpp" />
 		<Unit filename="Players.h" />
+		<Unit filename="ScorePlayer.cpp" />
+		<Unit filename="ScorePlayer.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

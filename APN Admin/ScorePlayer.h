@@ -19,6 +19,10 @@ typedef struct _nodoScorePLayer{
     struct _nodoScorePLayer * derecha;
 }NodoScorePLayerTree;
 
+NodoScorePLayerTree * inicArbol();
+NodoScorePLayerTree * createNodoTree (ScorePLayer dato);
+NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato);
+NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato->idPlayer);
 
 #endif // SCOREPLAYER_H_INCLUDED
 
