@@ -156,18 +156,29 @@ int searchPosInArray(cell adl[], int cant, int idPlayer){   ///busca la posicion
 void listaToArrayOfPlayers(cell adl[], int cant){
     GameList aux;
     int i = 0;
+    int j = 0;
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             nodoGameList * helper = createNodo(aux);
             i = searchPosInArray(adl, cant, helper->dato.player1.idPlayer);
             adl[i].lista = addToBeginning(adl[i].lista, helper);
+            j = searchPosInArray(adl, cant, helper->dato.player2.idPlayer);
+            adl[j].lista = addToBeginning(adl[j].lista, helper);
         }
         fclose(archi);
     }
 }
 
-
+void printArrayOfPlayersWithListas(cell adl[], int cant){
+    int i = 0;
+    for (i=0; i<cant; i++){
+        printPlayer(adl[i].dato);
+        if (adl[i].lista){
+            printMatch(adl[i].lista->dato);
+        }
+    }
+}
 
 
 

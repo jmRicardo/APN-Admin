@@ -14,7 +14,10 @@ int main()
     initMatch(aux1, aux2);
     printMatchFile();*/
     int validos = fromFileToArray(adl, 30);
-    printArrayOfPlayers(adl, validos);
+    //printf("\nVALIDOS: %d", validos);
+    //printArrayOfPlayers(adl, validos);
+    listaToArrayOfPlayers(adl, validos);
+    printArrayOfPlayersWithListas(adl, validos);
 
     return 0;
 }

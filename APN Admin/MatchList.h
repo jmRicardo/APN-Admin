@@ -50,7 +50,9 @@ nodoGameList * addToFinal(nodoGameList * lista, nodoGameList * nuevoNodo);
 nodoGameList * searchNodoForIdPlayer(nodoGameList * lista);
 int fromFileToArray(cell adl[], int dim);
 void printArrayOfPlayers(cell adl[], int cant);
+int searchPosInArray(cell adl[], int cant, int idPlayer);
 void listaToArrayOfPlayers(cell adl[], int cant);
+void printArrayOfPlayersWithListas(cell adl[], int cant);
 
 
 
