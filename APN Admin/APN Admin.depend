@@ -22,9 +22,10 @@
 	"MatchList.h"
 	"Players.h"
 
-1571580401 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\main.cpp
+1571619666 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\main.cpp
 	"MatchList.h"
 	"Players.h"
+	"ScorePlayer.h"
 
 1571580401 c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\matchlist.h
 	<stdio.h>
@@ -38,10 +39,21 @@
 	<iostream>
 	<string.h>
 
-1571580401 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\matchlist.cpp
+1571621009 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\matchlist.cpp
 	"MatchList.h"
 	"Players.h"
 
 1571512313 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\players.cpp
 	"Players.h"
+
+1571621088 c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\scoreplayer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+
+1571620244 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\apn admin\scoreplayer.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
 

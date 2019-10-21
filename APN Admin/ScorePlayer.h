@@ -22,7 +22,9 @@ typedef struct _nodoScorePLayer{
 NodoScorePLayerTree * inicArbol();
 NodoScorePLayerTree * createNodoTree (ScorePLayer dato);
 NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato);
-NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato->idPlayer);
+NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato);
+void postorder(NodoScorePLayerTree * tree);
+// NodoScorePLayerTree * moveFromTreeToLista(NodoScorePLayerTree * tree, nodo * lista);      el nodo todavia no existe x si lo necestamos
 
 #endif // SCOREPLAYER_H_INCLUDED
 
