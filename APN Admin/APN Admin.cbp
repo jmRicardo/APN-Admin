@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="MatchList.cpp" />
 		<Unit filename="MatchList.h" />
+		<Unit filename="Menu.cpp" />
+		<Unit filename="Menu.h" />
 		<Unit filename="Players.cpp" />
 		<Unit filename="Players.h" />
 		<Unit filename="ScorePlayer.cpp" />
