@@ -21,8 +21,6 @@ int searchLastID();
 bool checkPlayer(char playerNick[]);
 void printPlayer(Player p);
 void printFilePlayers();
-void deactivatePlayer(char playerNick[]);
-
 
 
 #endif // PLAYERS_H_INCLUDED

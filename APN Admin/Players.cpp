@@ -36,7 +36,7 @@ int searchLastID()       /// se para en el ultimo bloque de archivo y retorna su
     return id;
 }
 
-bool checkPlayer(char playerNick[]){            /// recorre el archivo, lo busca, si existe devuelve 0
+bool checkPlayer(char playerNick[]){            /// recorre el archivo lo buscar si existe y retorna 0(si no esta) si esta
     FILE * archi = fopen("players.dat", "rb");
     Player aux;
     bool flag = true;
@@ -55,7 +55,7 @@ void printPlayer(Player p)  ///funcion auxiliar que imprime un player por pantal
 {
     std::cout << p.idPlayer << std::endl;
     std::cout << p.nick << std::endl;
-    std::cout << p.active << std::endl;
+    //std::cout << p.active << std::endl;
 }
 
 void printFilePlayers()   ///imprime por pantalla todos los players desde el archivo
@@ -73,21 +73,8 @@ void printFilePlayers()   ///imprime por pantalla todos los players desde el arc
 
 }
 
-void deactivatePlayer(char playerNick[]){
-    Player aux;
-    bool pepe = true;
-    FILE * archi = fopen("players.dat", "r+b");
-    if (archi){
-        while ((fread(&aux, sizeof(Player), 1, archi) > 0) && pepe){
-            if (strcmpi(aux.nick, playerNick))
-                pepe = false;
-        }
-        fseek(archi, -1*(sizeof(Player)), SEEK_CUR);
-        aux.active = false;
-        fwrite(&aux, sizeof(Player), 1, archi);
-        fclose(archi);
-    }
-}
+
+
 
 
 
