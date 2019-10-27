@@ -21,6 +21,14 @@ int searchLastID();
 bool checkPlayer(char playerNick[]);
 void printPlayer(Player p);
 void printFilePlayers();
+void deactivatePlayer(char playerNick[]);
+void printActivePlayers();
+void printInactivePlayers();
+void insertInArray(Player a[], int cant, Player dato);
+void incertion(Player a[], int cant);
+int fromFileToArrayOfPlayers(Player a[], int dim);
+void printArrayOfPlayersPlayers(Player a[], int cant);
+
 
 
 #endif // PLAYERS_H_INCLUDED

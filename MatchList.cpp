@@ -153,7 +153,7 @@ int searchPosInArray(cell adl[], int cant, int idPlayer){   ///busca la posicion
     return pos;
 }
 
-void listaToArrayOfPlayers(cell adl[], int cant){
+void listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Matches al arreglo de listas
     GameList aux;
     int i = 0;
     int j = 0;
@@ -180,13 +180,75 @@ void printArrayOfPlayersWithListas(cell adl[], int cant){
     }
 }
 
+int searchiDFromName(char nickPlayer[]){   ///funcion auxiliar que devuelve el iD de un player recibiendo el nick
+    FILE * archi = fopen("players.dat", "rb");
+    Player aux;
+    int iD = -1;
+    if (archi){
+        while (fread((&aux), sizeof(Player), 1, archi) > 0){
+            if (strcmpi(nickPlayer, aux.nick) == 0){
+                iD = aux.idPlayer;
+            }
+        }
+        fclose(archi);
+    }
+    return iD;
+}
+/*
+void printScoreOfWantedPlayer(char nickPlayer[]){
+    int iD = searchiDFromName(nickPlayer);
+    double totalMatch;
+    int totalScore;
+    FILE * archi = fopen("score.dat", "rb");
+    scorePLayer aux;
+    if (archi){
+        while ((fread(&aux), sizeof(scorePLayer), 1, archi) > 0){
+            if (iD == aux.idPlayer){
+                totalMatch =+ aux.matchTime;
+                totalScore =+ aux.scoreTime;
+            }
+        }
+        fclose(archi);
+    }
+    printf("\nTotal Match Time: %lf", totalMatch);
+    printf("\nTotal Score Time: %d", totalScore);
+}
+*/
+/*
+void printAllScores(){
+    int iD = 1;
+    FILE * archi = fopen("score.dat", "rb");
+    scorePLayer aux;
+    if (archi){
+        while ((fread(&aux), sizeof(scorePLayer), 1, archi) > 0){
 
+        }
+    }
+}
+*/
 
+void printMatchFromAnId(int iD){   ///muestra un Match buscado por su Id
+    GameList aux;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        fseek(archi, ((iD - 1)*(sizeof(GameList))), SEEK_SET);
+        fread(&aux, sizeof(GameList), 1, archi);
+        printMatch(aux);
+        fclose(archi);
+    }
+}
 
-
-
-
-
-
-
+void printMatchFromAplayer(char nickPlayer[]){   ///muestra todos los Matches de un jugador especifico
+    GameList aux;
+    int id = searchiDFromName(nickPlayer);
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            if (aux.player1.idPlayer == id || aux.player2.idPlayer == id){
+                printMatch(aux);
+            }
+        }
+        fclose(archi);
+    }
+}
 
