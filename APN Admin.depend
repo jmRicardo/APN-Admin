@@ -181,3 +181,49 @@
 	"Players.h"
 	"ScorePlayer.h"
 
+1572124339 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\matchlist.cpp
+	"MatchList.h"
+	"Players.h"
+
+1572124339 c:\users\renzo\desktop\proyecto tp final\apn-admin\matchlist.h
+	<stdio.h>
+	<stdlib.h>
+	"Players.h"
+	<iostream>
+
+1572124339 c:\users\renzo\desktop\proyecto tp final\apn-admin\players.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+
+1572124339 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\menu.cpp
+	"Menu.h"
+
+1572124339 c:\users\renzo\desktop\proyecto tp final\apn-admin\menu.h
+	"Players.h"
+	"MatchList.h"
+
+1572124339 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\players.cpp
+	"Players.h"
+
+1572199609 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\scoreplayer.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
+
+1572199609 c:\users\renzo\desktop\proyecto tp final\apn-admin\scoreplayer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	"MatchList.h"
+	"ScorePlayer.h"
+
+1572187351 source:c:\users\renzo\desktop\proyecto tp final\apn-admin\main.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
+	<iostream>
+	"Menu.h"
+

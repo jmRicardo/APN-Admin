@@ -5,26 +5,33 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
+#include "MatchList.h"
+#include "ScorePlayer.h"
 
-typedef struct _ScorePLayer
-{
-    int idPlayer;
-    double matchTime;
-    int scoreTime;
-}ScorePLayer;
 
 typedef struct _nodoScorePLayer{
-    ScorePLayer dato;
+    scorePLayer dato;
     struct _nodoScorePLayer * izquierda;
     struct _nodoScorePLayer * derecha;
 }NodoScorePLayerTree;
 
-NodoScorePLayerTree * inicArbol();
-NodoScorePLayerTree * createNodoTree (ScorePLayer dato);
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato);
-NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato);
-void postorder(NodoScorePLayerTree * tree);
-// NodoScorePLayerTree * moveFromTreeToLista(NodoScorePLayerTree * tree, nodo * lista);      el nodo todavia no existe x si lo necestamos
+typedef struct _nodoListaScorePlayer{
+    scorePLayer dato;
+    struct _nodoListaScorePlayer * siguiente;
+}nodoListaScorePlayer;
 
+
+
+
+NodoScorePLayerTree * inicArbol();
+NodoScorePLayerTree * createNodoTree (scorePLayer dato);
+NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, scorePLayer dato);
+NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato);
+void postorder(NodoScorePLayerTree * tree);
+nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista);
+
+nodoListaScorePlayer * inicListaScore();
+nodoListaScorePlayer * createNodoLista(scorePLayer dato);
+nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, nodoListaScorePlayer * nuevoNodo);
 #endif // SCOREPLAYER_H_INCLUDED
 

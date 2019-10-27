@@ -2,12 +2,15 @@
 #include "Players.h"
 #include "ScorePlayer.h"
 
+/*nodoGameList * inicLista(){
+    return NULL;
+}*/
 
 NodoScorePLayerTree * inicArbol(){
 return NULL;
 }
 
-NodoScorePLayerTree * createNodoTree (ScorePLayer dato){
+NodoScorePLayerTree * createNodoTree (scorePLayer dato){
 
 NodoScorePLayerTree * aux = (NodoScorePLayerTree*) malloc(sizeof(NodoScorePLayerTree));
 aux->dato = dato;
@@ -16,7 +19,7 @@ aux->derecha = NULL;
 return aux;
 }
 
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato){
+NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, scorePLayer dato){
 
     if(tree == NULL)
         tree = createNodoTree(dato);
@@ -29,7 +32,7 @@ NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, ScorePLayer dato){
     return tree;
 }
 
-NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, ScorePLayer dato){
+NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato){
 
 NodoScorePLayerTree * reply = NULL;
     if(tree){
@@ -54,15 +57,33 @@ if(tree){
 }
 }
 
-/* NodoScorePLayerTree * moveFromTreeToLista(NodoScorePLayerTree * tree, nodo * lista){   x si lo necesitamos
-    NodoScorePLayerTree * aux = NULL;
+nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista){
+    nodoListaScorePlayer * aux = NULL;
     if (tree){
-        aux = createNodoTree(tree->dato);
-        lista = moveFromTreeToLista(lista, aux);
+        aux = createNodoLista(tree->dato);
+        lista = addToBeginningListeScore(lista, aux);
         lista = moveFromTreeToLista(tree->derecha, lista);
         lista = moveFromTreeToLista(tree->izquierda, lista);
     }
     return lista;
 }
-*/
 
+
+
+
+nodoListaScorePlayer * inicListaScore(){
+    return NULL;
+}
+
+nodoListaScorePlayer * createNodoLista(scorePLayer dato){
+    nodoListaScorePlayer * aux = (nodoListaScorePlayer*)malloc(sizeof(nodoListaScorePlayer));
+    aux->dato = dato;
+    aux->siguiente = NULL;
+    return aux;
+}
+
+nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, nodoListaScorePlayer * nuevoNodo){
+    nuevoNodo->siguiente = lista;
+    //nuevoNodo->dato = lista;
+    return nuevoNodo;
+}
