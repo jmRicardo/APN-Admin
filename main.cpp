@@ -9,5 +9,3 @@ int main()
     menu();
     return 0;
 }
-//printf("\nfacu gay");
-//printf("\nguille noob");
