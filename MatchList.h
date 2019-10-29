@@ -53,7 +53,6 @@ void printArrayOfPlayers(cell adl[], int cant);
 int searchPosInArray(cell adl[], int cant, int idPlayer);
 void listaToArrayOfPlayers(cell adl[], int cant);
 void printArrayOfPlayersWithListas(cell adl[], int cant);
-int searchiDFromName(char nickPlayer[]);
 void printMatchFromAnId(int iD);
 void printMatchFromAplayer(char nickPlayer[]);
 

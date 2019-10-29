@@ -180,20 +180,6 @@ void printArrayOfPlayersWithListas(cell adl[], int cant){
     }
 }
 
-int searchiDFromName(char nickPlayer[]){   ///funcion auxiliar que devuelve el iD de un player recibiendo el nick
-    FILE * archi = fopen("players.dat", "rb");
-    Player aux;
-    int iD = -1;
-    if (archi){
-        while (fread((&aux), sizeof(Player), 1, archi) > 0){
-            if (strcmpi(nickPlayer, aux.nick) == 0){
-                iD = aux.idPlayer;
-            }
-        }
-        fclose(archi);
-    }
-    return iD;
-}
 /*
 void printScoreOfWantedPlayer(char nickPlayer[]){
     int iD = searchiDFromName(nickPlayer);

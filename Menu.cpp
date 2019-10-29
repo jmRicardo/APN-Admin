@@ -98,7 +98,9 @@ int switchMainMenu(){   ///menu principal del modo Admin
                 printf("\nEl jugador no existe\n");
             }else{
                 deactivatePlayer(playerToDeactivate);
+                printf("\n--------------------------------");
                 printFilePlayers();
+                printf("\n--------------------------------\n");
                 //printArrayOfPlayersWithListas(adl, validos);
             }
             system("pause");
