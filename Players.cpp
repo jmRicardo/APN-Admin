@@ -1,5 +1,5 @@
 #include "Players.h"
-
+#include <stdbool.h>
 
 /// carga el jugador y devuelve falso si ya existe, usar este dato para mostrar cartel de " YA EXISTE "
 bool loadPlayer(char playerNick[]){
@@ -81,13 +81,14 @@ void deactivatePlayer(char playerNick[]){   ///funcion que desactiva (borra) un 
     int iD = searchiDFromName(playerNick);
     printf("\nID: %d\n", iD);
     //bool pepe = true;
-    FILE * archi = fopen("players.dat", "r+b");
+    FILE * archi = fopen("players.dat", "rb+");
     if (archi){
         fseek(archi, ((iD-1)*sizeof(Player)), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
         //printf("\n---ID---%d\n", iD);
         //printPlayer(aux);
         aux.active = false;
+        fseek(archi, ((iD-1)*sizeof(Player)), SEEK_SET);
         fwrite(&aux, sizeof(Player), 1, archi);
 
         fclose(archi);
