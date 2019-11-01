@@ -11,6 +11,7 @@ char playerToSearch[30];
 bool flagPlayer;
 char control;
 char playerToDeactivate[30];
+char playerToActivate[30];
 char playerToShowScores[30];
 
 void printMainMenu(){   ///opciones del menu principal
@@ -18,18 +19,28 @@ void printMainMenu(){   ///opciones del menu principal
     printf("\n00- Salir");
     printf("\n01- Players");  /// o modificar
     printf("\n02- Matches");
-    printf("\n03- Desactivar Player papu");
     printf("\n04- Mostrar score de un Player");
     printf("\n06- Mostrar score de todos los Player");
-    printf("\n08- Mostrar los Players ordenados por alguna propiedad");
 }
 
 void printSubMenuMatch(){   ///opciones del menu de Matches
     printf("\nSUBMENU MATCHES\n\n");
-    printf("\n00- Salir");
+    printf("\n00- Atras");
     printf("\n01- Mostrar Match desde su Id");
     printf("\n02- Mostrar Matches de cierto jugador");
     printf("\n03- Mostrar todos los Matches");
+}
+
+void printSubMenuPlayer(){   ///opciones del menu de Players
+    printf("\nSUBMENU PLAYERS\n\n");
+    printf("\n00- Atras");
+    printf("\n01- Cargar un jugador");
+    printf("\n02- Mostrar listado de Players");
+    printf("\n03- Mostrar listado de Players Activos");
+    printf("\n04- Mostrar listado de Players Inactivos");
+    printf("\n05- Mostrar listado de Players ordenados por Nick");
+    printf("\n06- Desactivar Player");
+    printf("\n07- Reactivar Player");
 }
 
 int switchSubMenuMatch(){   ///submenu de Matches
@@ -80,30 +91,13 @@ int switchMainMenu(){   ///menu principal del modo Admin
         case 1:
             system("cls");
             subMenuPlayer();
-            system("pause");
             break;
         case 2:
             system("cls");
             subMenuMatch();
-            system("pause");
             break;
         case 3:
             system("cls");
-            printf("\nQue jugador desea desactivar: ");
-            fflush(stdin);
-            scanf("%s", &playerToDeactivate);
-            flagPlayer = checkPlayer(playerToDeactivate);
-            ///printf("\n------%d", flagPlayer);
-            if (flagPlayer){
-                printf("\nEl jugador no existe\n");
-            }else{
-                deactivatePlayer(playerToDeactivate);
-                printf("\n--------------------------------");
-                printFilePlayers();
-                printf("\n--------------------------------\n");
-                //printArrayOfPlayersWithListas(adl, validos);
-            }
-            system("pause");
             break;
         case 4:
             system("cls");
@@ -118,17 +112,18 @@ int switchMainMenu(){   ///menu principal del modo Admin
                 int idbuscado = searchiDFromName(playerToShowScores);
                 printf("\n--ID: %d\n", idbuscado);
             }
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         case 0:
             exit(0);
             break;
         default:
             printf("\nOpcion invalida\n");
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         }
-    //system("pause");
     system("cls");
     printMainMenu();
     }while (opcion != 0);
@@ -170,15 +165,6 @@ void subMenuPlayer(){   ///funcion que invoca el menu de Players
     }while(aux != 0);
 }
 
-void printSubMenuPlayer(){
-    printf("\nSUBMENU PLAYERS\n\n");
-    printf("\n00- Salir");
-    printf("\n01- Cargar un jugador");
-    printf("\n02- Mostrar listado de Players");
-    printf("\n03- Mostrar listado de Players Activos");
-    printf("\n04- Mostrar listado de Players Inactivos");
-    printf("\n05- Mostrar listado de Players ordenados por Nick");
-}
 int switchSubMenuPlayer(){   ///submenu de Players
     int opcion;
     do{
@@ -190,7 +176,8 @@ int switchSubMenuPlayer(){   ///submenu de Players
             fflush(stdin);
             scanf("%s", &playerToAdd);
             loadPlayer(playerToAdd);
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         case 2:
             system("cls");
@@ -198,21 +185,24 @@ int switchSubMenuPlayer(){   ///submenu de Players
             printf("\n--------------------------------");
             printArrayOfPlayersWithListas(adl, validos);
             printf("\n--------------------------------\n");
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         case 3:
             system("cls");
             printf("\n--------------------------------");
-            printActivePlayers();
+            printActiveOrInactivePlayers(true);
             printf("\n--------------------------------\n");
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         case 4:
             system("cls");
             printf("\n--------------------------------");
-            printInactivePlayers();
+            printActiveOrInactivePlayers(false);
             printf("\n--------------------------------\n");
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
         case 5:
             system("cls");
@@ -221,8 +211,43 @@ int switchSubMenuPlayer(){   ///submenu de Players
             printf("\n--------------------------------");
             printArrayOfPlayersPlayers(forOrderedArray, validosPlayers);
             printf("\n--------------------------------\n");
-            system("pause");
+            fflush(stdin);
+            getchar();
             break;
+        case 6:
+            system("cls");
+            printf("\nQue jugador desea desactivar: ");
+            fflush(stdin);
+            scanf("%s", &playerToDeactivate);
+            flagPlayer = checkPlayer(playerToDeactivate);
+            if (flagPlayer){
+                printf("\nEl jugador no existe\n");
+            }else{
+                activeOrDeactivatePlayer(playerToDeactivate, false);
+                printf("\n--------------------------------");
+                printFilePlayers();
+                printf("\n--------------------------------\n");
+            }
+            fflush(stdin);
+            getchar();
+            break;
+        case 7:
+            system("cls");
+            printf("\nQue jugador desea reactivar: ");
+            fflush(stdin);
+            scanf("%s", &playerToActivate);
+            flagPlayer = checkPlayer(playerToActivate);
+            if (flagPlayer){
+                printf("\nEl jugador no existe\n");
+            }else{
+                activeOrDeactivatePlayer(playerToActivate, true);
+                printf("\n--------------------------------");
+                printFilePlayers();
+                printf("\n--------------------------------\n");
+            }
+            fflush(stdin);
+            getchar();
+
         case 0:
             break;
         default:

@@ -270,26 +270,26 @@
 	"Players.h"
 	"ScorePlayer.h"
 
-1572200571 source:c:\users\usuario\desktop\apn-admin\main.cpp
+1572568611 source:c:\users\usuario\desktop\apn-admin\main.cpp
 	"MatchList.h"
 	"Players.h"
 	"ScorePlayer.h"
 	<iostream>
 	"Menu.h"
 
-1572205644 c:\users\usuario\desktop\apn-admin\matchlist.h
+1572568722 c:\users\usuario\desktop\apn-admin\matchlist.h
 	<stdio.h>
 	<stdlib.h>
 	"Players.h"
 	<iostream>
 
-1572210822 c:\users\usuario\desktop\apn-admin\players.h
+1572566786 c:\users\usuario\desktop\apn-admin\players.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
 	<string.h>
 
-1572185266 c:\users\usuario\desktop\apn-admin\scoreplayer.h
+1572555899 c:\users\usuario\desktop\apn-admin\scoreplayer.h
 	<stdio.h>
 	<stdlib.h>
 	<iostream>
@@ -297,23 +297,24 @@
 	"MatchList.h"
 	"ScorePlayer.h"
 
-1572206974 c:\users\usuario\desktop\apn-admin\menu.h
+1572555899 c:\users\usuario\desktop\apn-admin\menu.h
 	"Players.h"
 	"MatchList.h"
 
-1572205857 source:c:\users\usuario\desktop\apn-admin\matchlist.cpp
+1572569455 source:c:\users\usuario\desktop\apn-admin\matchlist.cpp
 	"MatchList.h"
 	"Players.h"
 
-1572211083 source:c:\users\usuario\desktop\apn-admin\players.cpp
+1572566780 source:c:\users\usuario\desktop\apn-admin\players.cpp
 	"Players.h"
+	<stdbool.h>
 
-1572185266 source:c:\users\usuario\desktop\apn-admin\scoreplayer.cpp
+1572555899 source:c:\users\usuario\desktop\apn-admin\scoreplayer.cpp
 	"MatchList.h"
 	"Players.h"
 	"ScorePlayer.h"
 
-1572211133 source:c:\users\usuario\desktop\apn-admin\menu.cpp
+1572567359 source:c:\users\usuario\desktop\apn-admin\menu.cpp
 	"Menu.h"
 
 1572309350 source:c:\users\usuario\documents\github\apn-admin\menu.cpp

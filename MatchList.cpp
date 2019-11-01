@@ -6,7 +6,7 @@ int searchLastMatch(){   ///funcion que devuelve el id de la ultima partida juga
     GameList aux;
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
-        if (fseek(archi,-1*sizeof(GameList),SEEK_END)){
+        if (!(fseek(archi,-1*sizeof(GameList),SEEK_END))){
             fread(&aux, sizeof(GameList), 1, archi);
             id = aux.idMatch;
         }
@@ -31,13 +31,18 @@ void initMatch(Player one, Player two){   ///funcion que inicia una partida
 }
 
 void printScore(scorePLayer score){   ///funcion que muestra un solo Score
-    std::cout << "idPlayer: " << score.idPlayer << std::endl;
+    printf("\n Id Player: %d", score.idPlayer);
+    printf("\nMatch Time: %lf", score.matchTime);
+    printf("\nScore Time: %d", score.scoreTime);
+    /*std::cout << "idPlayer: " << score.idPlayer << std::endl;
     std::cout << "Match Time : " << score.matchTime << std::endl;
-    std::cout << "Score Time: " << score.scoreTime << std::endl;
+    std::cout << "Score Time: " << score.scoreTime << std::endl;*/
+    printf("\n--------------------------------------------\n");
 }
 
 void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
-    std::cout << "idMatch: " << match.idMatch << std::endl;
+    printf("\n  Id Match: %d", match.idMatch);
+    //std::cout << "idMatch: " << match.idMatch << std::endl;
     printScore(match.player1);
     printScore(match.player2);
     if (match.whoWon){
@@ -62,7 +67,9 @@ Player traeme(){  ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
+        fseek(archi, 4*sizeof(Player), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
+        fclose(archi);
     }
     return aux;
 }
@@ -71,7 +78,9 @@ Player traemeotro(){   ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
-        fread(&aux, sizeof(Player), 2, archi);
+        fseek(archi, 3*sizeof(Player), SEEK_SET);
+        fread(&aux, sizeof(Player), 1, archi);
+        fclose(archi);
     }
     return aux;
 }

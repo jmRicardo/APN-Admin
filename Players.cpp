@@ -76,46 +76,26 @@ void printFilePlayers()   ///imprime por pantalla todos los players desde el arc
 
 }
 
-void deactivatePlayer(char playerNick[]){   ///funcion que desactiva (borra) un Player
+void activeOrDeactivatePlayer(char playerNick[], bool dato){   ///funcion que desactiva o activa un Player
     Player aux;
     int iD = searchiDFromName(playerNick);
-    printf("\nID: %d\n", iD);
-    //bool pepe = true;
     FILE * archi = fopen("players.dat", "rb+");
     if (archi){
         fseek(archi, ((iD-1)*sizeof(Player)), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
-        //printf("\n---ID---%d\n", iD);
-        //printPlayer(aux);
-        aux.active = false;
+        aux.active = dato;
         fseek(archi, ((iD-1)*sizeof(Player)), SEEK_SET);
         fwrite(&aux, sizeof(Player), 1, archi);
-
-        fclose(archi);
-    }
-    printPlayer(aux);
-    printFilePlayers();
-}
-
-void printActivePlayers(){   ///imprime Players activos
-    Player aux;
-    FILE * archi = fopen("players.dat", "rb");
-    if (archi){
-        while (fread(&aux, sizeof(Player), 1, archi) > 0){
-            if (aux.active == true){
-                printPlayer(aux);
-            }
-        }
         fclose(archi);
     }
 }
 
-void printInactivePlayers(){   ///imprime Players inactivos
+void printActiveOrInactivePlayers(bool dato){   ///imprime Players activos o inactivos
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
         while (fread(&aux, sizeof(Player), 1, archi) > 0){
-            if (aux.active == false){
+            if (aux.active == dato){
                 printPlayer(aux);
             }
         }

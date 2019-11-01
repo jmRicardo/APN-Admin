@@ -19,7 +19,6 @@ typedef struct _GameList
     scorePLayer player1;
     scorePLayer player2;
     bool whoWon;
-    //struct _Gamelist * nextGame;
 }GameList;
 
 typedef struct _nodoGameList
