@@ -34,22 +34,19 @@ void printScore(scorePLayer score){   ///funcion que muestra un solo Score
     printf("\n Id Player: %d", score.idPlayer);
     printf("\nMatch Time: %lf", score.matchTime);
     printf("\nScore Time: %d", score.scoreTime);
-    /*std::cout << "idPlayer: " << score.idPlayer << std::endl;
-    std::cout << "Match Time : " << score.matchTime << std::endl;
-    std::cout << "Score Time: " << score.scoreTime << std::endl;*/
     printf("\n--------------------------------------------\n");
 }
 
 void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
-    printf("\n  Id Match: %d", match.idMatch);
-    //std::cout << "idMatch: " << match.idMatch << std::endl;
+    printf("\n  Id Match: |%d|", match.idMatch);
     printScore(match.player1);
     printScore(match.player2);
     if (match.whoWon){
-        std::cout << "Player 1 won" << match.whoWon << std::endl;
+        printf("\nPlayer 1 Won");
     }else{
-        std::cout << "Player 2 won" << match.whoWon << std::endl;
+        printf("\nPlayer 2 Won");
     }
+    printf("\n--------------------------------------------\n");
 }
 
 void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas jugadas

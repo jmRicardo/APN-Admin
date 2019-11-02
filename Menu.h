@@ -13,6 +13,9 @@ int switchSubMenuMatch();
 void subMenuPlayer();
 void printSubMenuPlayer();
 int switchSubMenuPlayer();
+void printSubMenuScores();
+int switchSubMenuScores();
+void subMenuScores();
 
 
 #endif // MENU_H_INCLUDED

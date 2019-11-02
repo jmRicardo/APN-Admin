@@ -17,9 +17,9 @@ char playerToShowScores[30];
 void printMainMenu(){   ///opciones del menu principal
     printf("\nMENU ADMIN\n\n");
     printf("\n00- Salir");
-    printf("\n01- Players");  /// o modificar
+    printf("\n01- Players");
     printf("\n02- Matches");
-    printf("\n04- Mostrar score de un Player");
+    printf("\n03- Scores");
     printf("\n06- Mostrar score de todos los Player");
 }
 
@@ -43,6 +43,36 @@ void printSubMenuPlayer(){   ///opciones del menu de Players
     printf("\n07- Reactivar Player");
 }
 
+void printSubMenuScores(){   ///opciones del menu de Scores
+    printf("\nSUBMENU SCORES\n\n");
+    printf("\n00- Atras");
+    printf("\n01- Mostrar Scores de un jugador");
+}
+int switchSubMenuScores(){   ///submenu de Scores
+    int opcion;
+    do{
+        opcion = choseYourDestiny();
+        switch(opcion){
+        case 1:
+            system("cls");
+
+            break;
+        case 0:
+            break;
+        default:
+            printf("\nOpcion invalida\n");
+            fflush(stdin);
+            getchar();
+            break;
+        }
+        system("cls");
+        if (opcion != 0){
+            printSubMenuScores();
+        }
+    }while (opcion != 0);
+    return opcion;
+}
+
 int switchSubMenuMatch(){   ///submenu de Matches
     int opcion;
     do{
@@ -53,7 +83,8 @@ int switchSubMenuMatch(){   ///submenu de Matches
                 printf("\nIngrese iD del Match deseado: ");
                 scanf("%d", &IdAbuscarMatch);
                 printMatchFromAnId(IdAbuscarMatch);
-                system("pause");
+                fflush(stdin);
+                getchar();
                 break;
             case 2:
                 system("cls");
@@ -61,18 +92,21 @@ int switchSubMenuMatch(){   ///submenu de Matches
                 fflush(stdin);
                 scanf("%s", &playerToSearch);
                 printMatchFromAplayer(playerToSearch);
-                system("pause");
+                fflush(stdin);
+                getchar();
                 break;
             case 3:
                 system("cls");
                 printMatchFile();
-                system("pause");
+                fflush(stdin);
+                getchar();
                 break;
             case 0:
                 break;
             default:
                 printf("\nOpcion invalida\n");
-                system("pause");
+                fflush(stdin);
+                getchar();
                 break;
         }
         system("cls");
@@ -98,6 +132,7 @@ int switchMainMenu(){   ///menu principal del modo Admin
             break;
         case 3:
             system("cls");
+            subMenuScores();
             break;
         case 4:
             system("cls");
@@ -162,6 +197,15 @@ void subMenuPlayer(){   ///funcion que invoca el menu de Players
         system("cls");
         printSubMenuPlayer();
         aux = switchSubMenuPlayer();
+    }while(aux != 0);
+}
+
+void subMenuScores(){   ///funcion que invoca el menu de Scores
+    int aux;
+    do{
+        system("cls");
+        printSubMenuScores();
+        aux = switchSubMenuScores();
     }while(aux != 0);
 }
 

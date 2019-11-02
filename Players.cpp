@@ -56,9 +56,6 @@ void printPlayer(Player p)  ///funcion auxiliar que imprime un player por pantal
     printf("\n    Id: %d", p.idPlayer);
     printf("\n  Nick: %s", p.nick);
     printf("\nActive: %d", p.active);
-    /*std::cout << p.idPlayer << std::endl;
-    std::cout << p.nick << std::endl;
-    std::cout << p.active << std::endl;*/
 }
 
 void printFilePlayers()   ///imprime por pantalla todos los players desde el archivo
