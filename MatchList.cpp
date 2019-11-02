@@ -64,7 +64,7 @@ Player traeme(){  ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
-        fseek(archi, 4*sizeof(Player), SEEK_SET);
+        fseek(archi, 5*sizeof(Player), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
         fclose(archi);
     }
@@ -75,7 +75,7 @@ Player traemeotro(){   ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
-        fseek(archi, 3*sizeof(Player), SEEK_SET);
+        fseek(archi, 2*sizeof(Player), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
         fclose(archi);
     }
