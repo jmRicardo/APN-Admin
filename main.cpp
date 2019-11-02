@@ -12,7 +12,16 @@ int main()
     /*Player lolo1 = traeme();
     Player lolo2 = traemeotro();
     initMatch(lolo1, lolo2);*/
-    menu();
+    cell miArray[20];
+    int cant;
+    cant = fromFileToArray(miArray, 20);
+    printArrayOfPlayers(miArray, cant);
+    printf("\n--------------------------------\n");
+    listaToArrayOfPlayers(miArray, cant);
+    printArrayOfPlayersWithListas(miArray, cant);
+
+
+    ///menu();
     return 0;
 }
 

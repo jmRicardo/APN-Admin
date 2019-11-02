@@ -82,23 +82,23 @@ Player traemeotro(){   ///funcion auxiliar para cargar un player
     return aux;
 }
 
-nodoGameList * inicLista(){
+nodoGameList * inicLista(){   ///inicia lista en NULL
     return NULL;
 }
 
-nodoGameList * createNodo(GameList dato){
+nodoGameList * createNodo(GameList dato){   ///crea un nodo
     nodoGameList * aux = (nodoGameList*)malloc(sizeof(nodoGameList));
     aux->dato = dato;
     aux->siguiente = NULL;
     return aux;
 }
 
-nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo){
+nodoGameList * addToBeginning(nodoGameList * lista, nodoGameList * nuevoNodo){   ///añade al principio de la lista
     nuevoNodo->siguiente = lista;
     return nuevoNodo;
 }
 
-nodoGameList * searchLastNodo(nodoGameList * lista){
+nodoGameList * searchLastNodo(nodoGameList * lista){   ///buscar ultimo nodo de la lista
     nodoGameList * aux = lista;
     if (aux){
         while (aux->siguiente){
@@ -133,6 +133,7 @@ int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo los p
     if (archi){
         while (fread(&aux, sizeof(Player), 1, archi) > 0){
             adl[i].dato = aux;
+            adl[i].lista = inicLista();
             i++;
         }
         fclose(archi);
