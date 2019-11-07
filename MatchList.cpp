@@ -23,7 +23,7 @@ void initMatch(Player one, Player two){   ///funcion que inicia una partida
         aux.idMatch = id + 1;
         aux.player1.idPlayer = one.idPlayer;
         aux.player1.matchTime = aux.player2.matchTime = 0;
-        aux.player1.scoreTime = aux.player2.scoreTime = 0;
+        aux.player1.wins = aux.player2.wins = 0;
         aux.player2.idPlayer = two.idPlayer;
         fwrite(&aux, sizeof(GameList), 1, archi);
         fclose(archi);
@@ -33,20 +33,15 @@ void initMatch(Player one, Player two){   ///funcion que inicia una partida
 void printScore(scorePLayer score){   ///funcion que muestra un solo Score
     printf("\n Id Player: %d", score.idPlayer);
     printf("\nMatch Time: %lf", score.matchTime);
-    printf("\nScore Time: %d", score.scoreTime);
-    printf("\n--------------------------------------------\n");
+    printf("\nWins      : %d", score.wins);
+    ///printf("\n--------------------------------------------\n");
 }
 
 void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
     printf("\n  Id Match: |%d|", match.idMatch);
     printScore(match.player1);
     printScore(match.player2);
-    if (match.whoWon){
-        printf("\nPlayer 1 Won");
-    }else{
-        printf("\nPlayer 2 Won");
-    }
-    printf("\n--------------------------------------------\n");
+    ///printf("\n--------------------------------------------\n");
 }
 
 void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas jugadas
@@ -55,6 +50,7 @@ void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas 
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             printMatch(aux);
+            printf("\n");
         }
         fclose(archi);
     }
@@ -64,7 +60,7 @@ Player traeme(){  ///funcion auxiliar para cargar un player
     Player aux;
     FILE * archi = fopen("players.dat", "rb");
     if (archi){
-        fseek(archi, 5*sizeof(Player), SEEK_SET);
+        fseek(archi, 1*sizeof(Player), SEEK_SET);
         fread(&aux, sizeof(Player), 1, archi);
         fclose(archi);
     }
@@ -180,10 +176,12 @@ void listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Match
 void printArrayOfPlayersWithListas(cell adl[], int cant){
     int i = 0;
     for (i=0; i<cant; i++){
+        printf("\n--------------------------------------------\n");
         printPlayer(adl[i].dato);
         if (adl[i].lista){
             printMatch(adl[i].lista->dato);
         }
+        printf("\n--------------------------------------------\n");
     }
 }
 
@@ -198,7 +196,7 @@ void printScoreOfWantedPlayer(char nickPlayer[]){
         while ((fread(&aux), sizeof(scorePLayer), 1, archi) > 0){
             if (iD == aux.idPlayer){
                 totalMatch =+ aux.matchTime;
-                totalScore =+ aux.scoreTime;
+                totalScore =+ aux.wins;
             }
         }
         fclose(archi);

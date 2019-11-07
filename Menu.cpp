@@ -1,12 +1,10 @@
 #include "Menu.h"
 
 cell adl[30];
-int opcion;
 Player forOrderedArray[30];
 int validos;
 int validosPlayers;
 char playerToAdd[30];
-int IdAbuscarMatch;
 char playerToSearch[30];
 bool flagPlayer;
 char control;
@@ -20,7 +18,6 @@ void printMainMenu(){   ///opciones del menu principal
     printf("\n01- Players");
     printf("\n02- Matches");
     printf("\n03- Scores");
-    printf("\n06- Mostrar score de todos los Player");
 }
 
 void printSubMenuMatch(){   ///opciones del menu de Matches
@@ -47,6 +44,7 @@ void printSubMenuScores(){   ///opciones del menu de Scores
     printf("\nSUBMENU SCORES\n\n");
     printf("\n00- Atras");
     printf("\n01- Mostrar Scores de un jugador");
+    printf("\n02- Mostrar Scores de todos los Player");
 }
 int switchSubMenuScores(){   ///submenu de Scores
     int opcion;
@@ -54,6 +52,10 @@ int switchSubMenuScores(){   ///submenu de Scores
         opcion = choseYourDestiny();
         switch(opcion){
         case 1:
+            system("cls");
+
+            break;
+        case 2:
             system("cls");
 
             break;
@@ -75,6 +77,8 @@ int switchSubMenuScores(){   ///submenu de Scores
 
 int switchSubMenuMatch(){   ///submenu de Matches
     int opcion;
+    int IdAbuscarMatch;
+    int lastMatchId;
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -82,7 +86,12 @@ int switchSubMenuMatch(){   ///submenu de Matches
                 system("cls");
                 printf("\nIngrese iD del Match deseado: ");
                 scanf("%d", &IdAbuscarMatch);
-                printMatchFromAnId(IdAbuscarMatch);
+                lastMatchId = searchLastMatch();
+                if (IdAbuscarMatch <= lastMatchId){
+                    printMatchFromAnId(IdAbuscarMatch);
+                }else{
+                    printf("\nEl Match no existe\n");
+                }
                 fflush(stdin);
                 getchar();
                 break;
@@ -251,7 +260,7 @@ int switchSubMenuPlayer(){   ///submenu de Players
         case 5:
             system("cls");
             validosPlayers = fromFileToArrayOfPlayers(forOrderedArray, 30);
-            incertion(forOrderedArray, validosPlayers);
+            insertion(forOrderedArray, validosPlayers);
             printf("\n--------------------------------");
             printArrayOfPlayersPlayers(forOrderedArray, validosPlayers);
             printf("\n--------------------------------\n");

@@ -51,9 +51,9 @@ void postorder(NodoScorePLayerTree * tree){
 if(tree){
  postorder(tree->derecha);
  postorder(tree->izquierda);
- printf("\n Id           :%i ", tree->dato.idPlayer);
- printf("\n Tiempo       :%lf ", tree->dato.matchTime);
- printf("\n Score Time   :%i ", tree->dato.scoreTime);
+ printf("\n     Id: %i", tree->dato.idPlayer);
+ printf("\n Tiempo: %lf", tree->dato.matchTime);
+ printf("\n   Wins: %i", tree->dato.wins);
 }
 }
 

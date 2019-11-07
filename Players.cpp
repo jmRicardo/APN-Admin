@@ -14,6 +14,7 @@ bool loadPlayer(char playerNick[]){
             aux.idPlayer = id;
             strcpy(aux.nick,playerNick);
             aux.active = true;
+            aux.totalTime = 0;
             fwrite(&aux,sizeof(Player),1,archi);
         }
         fclose(archi);
@@ -53,9 +54,10 @@ bool checkPlayer(char playerNick[]){            /// recorre el archivo, lo busca
 
 void printPlayer(Player p)  ///funcion auxiliar que imprime un player por pantalla (con o sin el active)
 {
-    printf("\n    Id: %d", p.idPlayer);
-    printf("\n  Nick: %s", p.nick);
-    printf("\nActive: %d", p.active);
+    printf("\n        Id: %d", p.idPlayer);
+    printf("\n      Nick: %s", p.nick);
+    printf("\n    Active: %d", p.active);
+    printf("\nTotal Time: %lf", p.totalTime);
 }
 
 void printFilePlayers()   ///imprime por pantalla todos los players desde el archivo
@@ -109,7 +111,7 @@ void insertInArray(Player a[], int cant, Player dato){   ///funcion auxiliar par
     a[i + 1] = dato;
 }
 
-void incertion(Player a[], int cant){   ///insercion
+void insertion(Player a[], int cant){   ///insercion
     int i = 0;
     while (i < cant-1){
         insertInArray(a, i, a[i + 1]);

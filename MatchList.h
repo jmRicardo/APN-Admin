@@ -10,7 +10,7 @@ typedef struct
 {
     int idPlayer;
     double matchTime;
-    int scoreTime;
+    int wins;
 }scorePLayer;
 
 typedef struct _GameList
@@ -18,7 +18,6 @@ typedef struct _GameList
     int idMatch;
     scorePLayer player1;
     scorePLayer player2;
-    bool whoWon;
 }GameList;
 
 typedef struct _nodoGameList
