@@ -2,8 +2,6 @@
 
 cell adl[30];
 Player forOrderedArray[30];
-int validos;
-int validosPlayers;
 char playerToAdd[30];
 char playerToSearch[30];
 bool flagPlayer;
@@ -38,6 +36,7 @@ void printSubMenuPlayer(){   ///opciones del menu de Players
     printf("\n05- Mostrar listado de Players ordenados por Nick");
     printf("\n06- Desactivar Player");
     printf("\n07- Reactivar Player");
+    printf("\n08- Cantidad de Matches que un Player jugo");
 }
 
 void printSubMenuScores(){   ///opciones del menu de Scores
@@ -133,6 +132,7 @@ int switchSubMenuMatch(){   ///submenu de Matches
 
 int switchMainMenu(){   ///menu principal del modo Admin
     int opcion;
+    int validos;
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -225,6 +225,11 @@ void subMenuScores(){   ///funcion que invoca el menu de Scores
 
 int switchSubMenuPlayer(){   ///submenu de Players
     int opcion;
+    int validos;
+    int flagPlayer;
+    int timesPlayed;
+    int validosPlayers;
+    char playerToKnowMatches[30];
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -305,6 +310,22 @@ int switchSubMenuPlayer(){   ///submenu de Players
             }
             fflush(stdin);
             getchar();
+            break;
+        case 8:
+            system("cls");
+            printf("\nPlayer del que desea conocer la cantidad de Matches: ");
+            fflush(stdin);
+            scanf("%s", &playerToKnowMatches);
+            flagPlayer = checkPlayer(playerToKnowMatches);
+            if (flagPlayer){
+                printf("\nEl jugador no existe\n");
+            }else{
+                timesPlayed = matchesPlayed(playerToKnowMatches);
+                printf("\nMatches jugados: %d", timesPlayed);
+            }
+            fflush(stdin);
+            getchar();
+            break;
 
         case 0:
             break;
