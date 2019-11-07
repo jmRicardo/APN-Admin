@@ -243,3 +243,18 @@ void printMatchFromAplayer(char nickPlayer[]){   ///muestra todos los Matches de
     }
 }
 
+int matchesPlayed(char nickPlayer[]){
+    GameList aux;
+    int cantidad = 0;
+    int id = searchiDFromName(nickPlayer);
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            if (aux.player1.idPlayer == id || aux.player2.idPlayer == id){
+                cantidad++;
+            }
+        }
+        fclose(archi);
+    }
+    return cantidad;
+}

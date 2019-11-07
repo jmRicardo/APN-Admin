@@ -79,6 +79,7 @@ int switchSubMenuMatch(){   ///submenu de Matches
     int opcion;
     int IdAbuscarMatch;
     int lastMatchId;
+    int cant;
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -100,7 +101,11 @@ int switchSubMenuMatch(){   ///submenu de Matches
                 printf("\nIngrese nombre del jugador del cual desea ver los Matches: ");
                 fflush(stdin);
                 scanf("%s", &playerToSearch);
-                printMatchFromAplayer(playerToSearch);
+                if (cant = matchesPlayed(playerToSearch)){
+                    printMatchFromAplayer(playerToSearch);
+                }else{
+                    printf("\nEl Player no tiene Matches\n");
+                }
                 fflush(stdin);
                 getchar();
                 break;
