@@ -258,3 +258,39 @@ int matchesPlayed(char nickPlayer[]){
     }
     return cantidad;
 }
+
+double playedTime(char nickPlayer[]){
+    GameList aux;
+    int id = searchiDFromName(nickPlayer);
+    double total = 0;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            if (id == aux.player1.idPlayer){
+                total += aux.player1.matchTime;
+                }
+            if (id == aux.player2.matchTime){
+                total += aux.player2.matchTime;
+            }
+        }
+        fclose(archi);
+    }
+    return total;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

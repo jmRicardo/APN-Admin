@@ -35,6 +35,7 @@ void printSubMenuPlayer(){   ///opciones del menu de Players
     printf("\n06- Desactivar Player");
     printf("\n07- Reactivar Player");
     printf("\n08- Cantidad de Matches que un Player jugo");
+    printf("\n09- Tiempo total jugado por un Player");
 }
 
 void printSubMenuScores(){   ///opciones del menu de Scores
@@ -246,6 +247,7 @@ int switchSubMenuPlayer(){   ///submenu de Players
     int validos;
     int flagPlayer;
     int timesPlayed;
+    double totalTimePlayed;
     int validosPlayers;
     char playerToSearch[30];
     do{
@@ -344,7 +346,19 @@ int switchSubMenuPlayer(){   ///submenu de Players
             fflush(stdin);
             getchar();
             break;
-
+        case 9:
+            system("cls");
+            printf("\nIngrese nombre del Player que desea saber cuanto tiempo jugo: ");
+            fflush(stdin);
+            scanf("%s", &playerToSearch);
+            flagPlayer = checkPlayer(playerToSearch);
+            if (flagPlayer){
+                printf("\nEl jugador no existe\n");
+            }else{
+                totalTimePlayed =
+            }
+            fflush(stdin);
+            getchar();
         case 0:
             break;
         default:

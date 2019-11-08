@@ -54,6 +54,7 @@ void printArrayOfPlayersWithListas(cell adl[], int cant);
 void printMatchFromAnId(int iD);
 void printMatchFromAplayer(char nickPlayer[]);
 int matchesPlayed(char nickPlayer[]);
+double playedTime(char nickPlayer[]);
 
 
 
