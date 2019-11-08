@@ -9,10 +9,10 @@
 #include "ScorePlayer.h"
 
 
-typedef struct _nodoScorePLayer{
+typedef struct _NodoScorePLayerTree{
     scorePLayer dato;
-    struct _nodoScorePLayer * izquierda;
-    struct _nodoScorePLayer * derecha;
+    struct _NodoScorePLayerTree * izquierda;
+    struct _NodoScorePLayerTree * derecha;
 }NodoScorePLayerTree;
 
 typedef struct _nodoListaScorePlayer{
@@ -25,7 +25,7 @@ typedef struct _nodoListaScorePlayer{
 
 NodoScorePLayerTree * inicArbol();
 NodoScorePLayerTree * createNodoTree (scorePLayer dato);
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, scorePLayer dato);
+NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree * nuevo);
 NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato);
 void postorder(NodoScorePLayerTree * tree);
 nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista);
@@ -33,5 +33,7 @@ nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoLista
 nodoListaScorePlayer * inicListaScore();
 nodoListaScorePlayer * createNodoLista(scorePLayer dato);
 nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, nodoListaScorePlayer * nuevoNodo);
+NodoScorePLayerTree * fromFileToTree();
+
 #endif // SCOREPLAYER_H_INCLUDED
 

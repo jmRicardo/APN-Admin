@@ -2,6 +2,7 @@
 #define MENU_H_INCLUDED
 #include "Players.h"
 #include "MatchList.h"
+#include "ScorePlayer.h"
 
 int switchMainMenu();
 int choseYourDestiny();

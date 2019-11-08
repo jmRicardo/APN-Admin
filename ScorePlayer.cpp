@@ -19,15 +19,15 @@ aux->derecha = NULL;
 return aux;
 }
 
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, scorePLayer dato){
+NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree * nuevo){
 
     if(tree == NULL)
-        tree = createNodoTree(dato);
+        tree = nuevo;
     else{
-        if (dato.idPlayer > tree->dato.idPlayer)
-            tree->derecha = insertTree(tree->derecha,dato);
+        if (nuevo->dato.idPlayer > tree->dato.idPlayer)
+            tree->derecha = insertTree(tree->derecha, nuevo);
     else
-            tree->izquierda = insertTree(tree->izquierda, dato);
+            tree->izquierda = insertTree(tree->izquierda, nuevo);
 }
     return tree;
 }
@@ -68,9 +68,6 @@ nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoLista
     return lista;
 }
 
-
-
-
 nodoListaScorePlayer * inicListaScore(){
     return NULL;
 }
@@ -87,3 +84,36 @@ nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, no
     //nuevoNodo->dato = lista;
     return nuevoNodo;
 }
+
+NodoScorePLayerTree * fromFileToTree(){
+    GameList aux;
+    NodoScorePLayerTree * barbol = inicArbol();
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            NodoScorePLayerTree * helper = createNodoTree(aux.player1);
+            barbol = insertTree(barbol, helper);
+            NodoScorePLayerTree * helper2 = createNodoTree(aux.player2);
+            barbol = insertTree(barbol, helper2);
+        }
+        fclose(archi);
+    }
+    return barbol;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

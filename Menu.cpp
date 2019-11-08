@@ -3,8 +3,6 @@
 cell adl[30];
 Player forOrderedArray[30];
 char playerToAdd[30];
-char playerToSearch[30];
-bool flagPlayer;
 char control;
 char playerToDeactivate[30];
 char playerToActivate[30];
@@ -47,16 +45,32 @@ void printSubMenuScores(){   ///opciones del menu de Scores
 }
 int switchSubMenuScores(){   ///submenu de Scores
     int opcion;
+    int flagPlayer;
+    char playerToSearch[30];
+    NodoScorePLayerTree * barbol = inicArbol();
     do{
         opcion = choseYourDestiny();
         switch(opcion){
         case 1:
             system("cls");
+            printf("\nPlayer del que desea saber Score: ");
+            fflush(stdin);
+            scanf("%s", &playerToSearch);
+            flagPlayer = checkPlayer(playerToShowScores);
+            if (flagPlayer){
+                printf("\nEl jugador no existe\n");
+            }else{
 
+            }
+            fflush(stdin);
+            getchar();
             break;
         case 2:
             system("cls");
-
+            barbol = fromFileToTree();
+            postorder(barbol);
+            fflush(stdin);
+            getchar();
             break;
         case 0:
             break;
@@ -77,6 +91,7 @@ int switchSubMenuScores(){   ///submenu de Scores
 int switchSubMenuMatch(){   ///submenu de Matches
     int opcion;
     int IdAbuscarMatch;
+    char playerToSearch[30];
     int lastMatchId;
     int cant;
     do{
@@ -132,6 +147,7 @@ int switchSubMenuMatch(){   ///submenu de Matches
 
 int switchMainMenu(){   ///menu principal del modo Admin
     int opcion;
+    int flagPlayer;
     int validos;
     do{
         opcion = choseYourDestiny();
@@ -229,7 +245,7 @@ int switchSubMenuPlayer(){   ///submenu de Players
     int flagPlayer;
     int timesPlayed;
     int validosPlayers;
-    char playerToKnowMatches[30];
+    char playerToSearch[30];
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -315,12 +331,12 @@ int switchSubMenuPlayer(){   ///submenu de Players
             system("cls");
             printf("\nPlayer del que desea conocer la cantidad de Matches: ");
             fflush(stdin);
-            scanf("%s", &playerToKnowMatches);
-            flagPlayer = checkPlayer(playerToKnowMatches);
+            scanf("%s", &playerToSearch);
+            flagPlayer = checkPlayer(playerToSearch);
             if (flagPlayer){
                 printf("\nEl jugador no existe\n");
             }else{
-                timesPlayed = matchesPlayed(playerToKnowMatches);
+                timesPlayed = matchesPlayed(playerToSearch);
                 printf("\nMatches jugados: %d", timesPlayed);
             }
             fflush(stdin);
