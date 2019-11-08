@@ -28,6 +28,9 @@ NodoScorePLayerTree * createNodoTree (scorePLayer dato);
 NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree * nuevo);
 NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato);
 void postorder(NodoScorePLayerTree * tree);
+void printScoreOfCertainPlayer(char nickPlayer[]);
+
+
 nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista);
 
 nodoListaScorePlayer * inicListaScore();

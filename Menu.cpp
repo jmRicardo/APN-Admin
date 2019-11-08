@@ -56,11 +56,13 @@ int switchSubMenuScores(){   ///submenu de Scores
             printf("\nPlayer del que desea saber Score: ");
             fflush(stdin);
             scanf("%s", &playerToSearch);
-            flagPlayer = checkPlayer(playerToShowScores);
+            flagPlayer = checkPlayer(playerToSearch);
             if (flagPlayer){
                 printf("\nEl jugador no existe\n");
             }else{
-
+                printf("\n--------------------------------\n");
+                printScoreOfCertainPlayer(playerToSearch);
+                printf("\n--------------------------------\n");
             }
             fflush(stdin);
             getchar();

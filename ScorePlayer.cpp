@@ -101,7 +101,24 @@ NodoScorePLayerTree * fromFileToTree(){
     return barbol;
 }
 
-
+void printScoreOfCertainPlayer(char nickPlayer[]){
+    GameList aux;
+    int id = searchiDFromName(nickPlayer);
+    NodoScorePLayerTree * barbol = inicArbol();
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            if (id == aux.player1.idPlayer){
+                printScore(aux.player1);
+            }else{
+                if (id == aux.player2.idPlayer){
+                    printScore(aux.player2);
+                }
+            }
+        }
+        fclose(archi);
+    }
+}
 
 
 
