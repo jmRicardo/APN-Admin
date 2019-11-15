@@ -48,13 +48,26 @@ return reply;
 }
 
 void postorder(NodoScorePLayerTree * tree){
-if(tree){
- postorder(tree->derecha);
- postorder(tree->izquierda);
- printf("\n     Id: %i", tree->dato.idPlayer);
- printf("\n Tiempo: %lf", tree->dato.matchTime);
- printf("\n   Wins: %i", tree->dato.wins);
+    if(tree){
+        postorder(tree->izquierda);
+        postorder(tree->derecha);
+        printScore(tree->dato);
+    }
 }
+
+void inorder(NodoScorePLayerTree * tree){
+    if (tree){
+        inorder(tree->izquierda);
+        printScore(tree->dato);
+        inorder(tree->derecha);
+    }
+}
+void preorder(NodoScorePLayerTree * tree){
+    if (tree){
+        printScore(tree->dato);
+        preorder(tree->izquierda);
+        preorder(tree->derecha);
+    }
 }
 
 nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista){

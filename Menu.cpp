@@ -355,7 +355,8 @@ int switchSubMenuPlayer(){   ///submenu de Players
             if (flagPlayer){
                 printf("\nEl jugador no existe\n");
             }else{
-                totalTimePlayed =
+                totalTimePlayed = playedTime(playerToSearch);
+                printf("\nTiempo total jugado: %d", totalTimePlayed);
             }
             fflush(stdin);
             getchar();

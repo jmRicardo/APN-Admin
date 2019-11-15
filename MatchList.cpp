@@ -122,7 +122,7 @@ nodoGameList * searchNodoForIdPlayer(nodoGameList * lista, int idPlayer){   ///b
     return aux;
 }
 
-int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo los players
+int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo de listas
     Player aux;
     int i = 0;
     FILE * archi = fopen("players.dat", "rb");
@@ -173,50 +173,21 @@ void listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Match
     }
 }
 
-void printArrayOfPlayersWithListas(cell adl[], int cant){
+void printArrayOfPlayersWithListas(cell adl[], int cant){   ///muestra el arreglo de listas
     int i = 0;
     for (i=0; i<cant; i++){
         printf("\n--------------------------------------------\n");
         printPlayer(adl[i].dato);
         if (adl[i].lista){
-            printMatch(adl[i].lista->dato);
+            nodoGameList * aux = adl[i].lista;
+            while (aux){
+                printMatch(aux->dato);
+                aux = aux->siguiente;
+            }
         }
         printf("\n--------------------------------------------\n");
     }
 }
-
-/*
-void printScoreOfWantedPlayer(char nickPlayer[]){
-    int iD = searchiDFromName(nickPlayer);
-    double totalMatch;
-    int totalScore;
-    FILE * archi = fopen("score.dat", "rb");
-    scorePLayer aux;
-    if (archi){
-        while ((fread(&aux), sizeof(scorePLayer), 1, archi) > 0){
-            if (iD == aux.idPlayer){
-                totalMatch =+ aux.matchTime;
-                totalScore =+ aux.wins;
-            }
-        }
-        fclose(archi);
-    }
-    printf("\nTotal Match Time: %lf", totalMatch);
-    printf("\nTotal Score Time: %d", totalScore);
-}
-*/
-/*
-void printAllScores(){
-    int iD = 1;
-    FILE * archi = fopen("score.dat", "rb");
-    scorePLayer aux;
-    if (archi){
-        while ((fread(&aux), sizeof(scorePLayer), 1, archi) > 0){
-
-        }
-    }
-}
-*/
 
 void printMatchFromAnId(int iD){   ///muestra un Match buscado por su Id
     GameList aux;
@@ -243,7 +214,7 @@ void printMatchFromAplayer(char nickPlayer[]){   ///muestra todos los Matches de
     }
 }
 
-int matchesPlayed(char nickPlayer[]){
+int matchesPlayed(char nickPlayer[]){   ///devuelve la cantidad de partidas que jugo un Player
     GameList aux;
     int cantidad = 0;
     int id = searchiDFromName(nickPlayer);
@@ -259,7 +230,7 @@ int matchesPlayed(char nickPlayer[]){
     return cantidad;
 }
 
-double playedTime(char nickPlayer[]){
+double playedTime(char nickPlayer[]){   ///cantidad total de tiempo que jugo un player
     GameList aux;
     int id = searchiDFromName(nickPlayer);
     double total = 0;
