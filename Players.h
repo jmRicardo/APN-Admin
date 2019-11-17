@@ -14,6 +14,7 @@ typedef struct{
     double totalTime;
 }Player;
 
+
 bool loadPlayer(char playerNick[]);
 int searchLastID();
 bool checkPlayer(char playerNick[]);
@@ -26,6 +27,8 @@ void insertion(Player a[], int cant);
 int fromFileToArrayOfPlayers(Player a[], int dim);
 void printArrayOfPlayersPlayers(Player a[], int cant);
 int searchiDFromName(char nickPlayer[]);
+
+
 
 
 

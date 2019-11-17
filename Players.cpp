@@ -170,4 +170,3 @@ int searchiDFromName(char nickPlayer[]){   ///funcion auxiliar que devuelve el i
 
 
 
-

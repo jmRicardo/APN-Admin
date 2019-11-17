@@ -1,12 +1,6 @@
 #include "Menu.h"
 
 cell adl[30];
-Player forOrderedArray[30];
-char playerToAdd[30];
-char control;
-char playerToDeactivate[30];
-char playerToActivate[30];
-char playerToShowScores[30];
 
 void printMainMenu(){   ///opciones del menu principal
     printf("\nMENU ADMIN\n\n");
@@ -152,6 +146,7 @@ int switchMainMenu(){   ///menu principal del modo Admin
     int opcion;
     int flagPlayer;
     int validos;
+    char playerToShowScores[30];
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -249,7 +244,11 @@ int switchSubMenuPlayer(){   ///submenu de Players
     int timesPlayed;
     double totalTimePlayed;
     int validosPlayers;
+    char playerToAdd[30];
+    char playerToDeactivate[30];
+    char playerToActivate[30];
     char playerToSearch[30];
+    Player forOrderedArray[30];
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -265,9 +264,9 @@ int switchSubMenuPlayer(){   ///submenu de Players
         case 2:
             system("cls");
             validos = fromFileToArray(adl, 30);
-            printf("\n--------------------------------");
+            //printf("\n--------------------------------");
             printArrayOfPlayersWithListas(adl, validos);
-            printf("\n--------------------------------\n");
+            //printf("\n--------------------------------\n");
             fflush(stdin);
             getchar();
             break;

@@ -144,16 +144,33 @@ void printArrayOfPlayers(cell adl[], int cant){   ///imprime por pantalla el arr
     }
 }
 
-int searchPosInArray(cell adl[], int cant, int idPlayer){   ///busca la posicion de un player en el arreglo
+int searchPosInArray(cell adl[], int validos, int idPlayer){   ///busca la posicion de un player en el arreglo
     int pos = -1;
     int i = 0;
-    while (i < cant && pos == -1){
+    while (i < validos && pos == -1){
         if (adl[i].dato.idPlayer == idPlayer){
             pos = i;
         }
         i++;
     }
     return pos;
+}
+
+int addToArray(cell adl[], int validos, int idPlayer){
+    adl[validos].dato.idPlayer = idPlayer;
+    adl[validos].lista = inicLista();
+    return validos + 1;
+}
+
+int alta(cell adl[], int validos, int idPlayer, GameList dato){
+    nodoGameList * aux = createNodo(dato);
+    int pos = searchPosInArray(adl, validos, idPlayer);
+    if (pos == - 1){
+        validos = addToArray(adl, validos, idPlayer);
+        pos = validos - 1;
+    }
+    adl[pos].lista = addToFinal(adl[pos].lista, aux);
+    return validos;
 }
 
 void listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Matches al arreglo de listas
