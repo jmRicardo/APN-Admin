@@ -263,7 +263,8 @@ int switchSubMenuPlayer(){   ///submenu de Players
             break;
         case 2:
             system("cls");
-            validos = listaToArrayOfPlayers(adl, 30);
+            validos = fromFileToArray(adl, 30);
+            validos = listaToArrayOfPlayers(adl, validos);
             //printf("\n--------------------------------");
             printArrayOfPlayersWithListas(adl, validos);
             //printf("\n--------------------------------\n");
