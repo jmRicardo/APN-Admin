@@ -173,21 +173,22 @@ int alta(cell adl[], int validos, int idPlayer, GameList dato){
     return validos;
 }
 
-void listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Matches al arreglo de listas
+int listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Matches al arreglo de listas
     GameList aux;
+    int validos = 0;
     int i = 0;
     int j = 0;
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
-            nodoGameList * helper = createNodo(aux);
-            i = searchPosInArray(adl, cant, helper->dato.player1.idPlayer);
-            adl[i].lista = addToBeginning(adl[i].lista, helper);
-            j = searchPosInArray(adl, cant, helper->dato.player2.idPlayer);
-            adl[j].lista = addToBeginning(adl[j].lista, helper);
+            nodoGameList * helper1 = createNodo(aux);
+            nodoGameList * helper2 = createNodo(aux);
+            validos = alta(adl, cant, helper1->dato.player1.idPlayer, aux);
+            validos = alta(adl, cant, helper2->dato.player2.idPlayer, aux);
         }
         fclose(archi);
     }
+    return validos;
 }
 
 void printArrayOfPlayersWithListas(cell adl[], int cant){   ///muestra el arreglo de listas
