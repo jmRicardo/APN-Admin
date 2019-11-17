@@ -3,11 +3,11 @@
 #include "ScorePlayer.h"
 
 
-NodoScorePlayerTree * inicArbol(){
+NodoScorePlayerTree * inicArbol(){   ///funcion que inicia el arbol en NULL
 return NULL;
 }
 
-NodoScorePlayerTree * createNodoTree (scorePLayer dato){
+NodoScorePlayerTree * createNodoTree (scorePLayer dato){   ///funcion que crea un nodo
 
 NodoScorePlayerTree * aux = (NodoScorePlayerTree*) malloc(sizeof(NodoScorePlayerTree));
 aux->dato = dato;
@@ -16,7 +16,7 @@ aux->derecha = NULL;
 return aux;
 }
 
-NodoScorePlayerTree * insertTree(NodoScorePlayerTree * tree, NodoScorePlayerTree * nuevo){
+NodoScorePlayerTree * insertTree(NodoScorePlayerTree * tree, NodoScorePlayerTree * nuevo){   ///funcion que inserta un nodo en el arbol
 
     if(tree == NULL)
         tree = nuevo;
@@ -29,7 +29,7 @@ NodoScorePlayerTree * insertTree(NodoScorePlayerTree * tree, NodoScorePlayerTree
     return tree;
 }
 
-NodoScorePlayerTree * searchTree(NodoScorePlayerTree * tree, scorePLayer dato){
+NodoScorePlayerTree * searchTree(NodoScorePlayerTree * tree, scorePLayer dato){   ///funcion de busqueda
 
 NodoScorePlayerTree * reply = NULL;
     if(tree){
@@ -44,7 +44,7 @@ NodoScorePlayerTree * reply = NULL;
 return reply;
 }
 
-void postorder(NodoScorePlayerTree * tree){
+void postorder(NodoScorePlayerTree * tree){   ///recorrido postorder
     if(tree){
         postorder(tree->izquierda);
         postorder(tree->derecha);
@@ -54,7 +54,7 @@ void postorder(NodoScorePlayerTree * tree){
     }
 }
 
-void inorder(NodoScorePlayerTree * tree){
+void inorder(NodoScorePlayerTree * tree){   ///recorrido inorder
     if (tree){
         inorder(tree->izquierda);
         printf("\n--------------------------------");
@@ -63,7 +63,7 @@ void inorder(NodoScorePlayerTree * tree){
         inorder(tree->derecha);
     }
 }
-void preorder(NodoScorePlayerTree * tree){
+void preorder(NodoScorePlayerTree * tree){   ///recorrido preorder
     if (tree){
         printf("\n--------------------------------");
         printScore(tree->dato);
@@ -73,7 +73,7 @@ void preorder(NodoScorePlayerTree * tree){
     }
 }
 
-nodoListaScorePlayer * moveFromTreeToLista(NodoScorePlayerTree * tree, nodoListaScorePlayer * lista){
+nodoListaScorePlayer * moveFromTreeToLista(NodoScorePlayerTree * tree, nodoListaScorePlayer * lista){   ///funcion que pasa del arbol a una lista
     nodoListaScorePlayer * aux = NULL;
     if (tree){
         aux = createNodoLista(tree->dato);
