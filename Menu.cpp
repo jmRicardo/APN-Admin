@@ -14,14 +14,14 @@ void printSubMenuMatch(){   ///opciones del menu de Matches
     printf("\nSUBMENU MATCHES\n\n");
     printf("\n00- Atras");
     printf("\n01- Mostrar Match desde su Id");
-    printf("\n02- Mostrar Matches de cierto jugador");
+    printf("\n02- Mostrar Matches de cierto Player");
     printf("\n03- Mostrar todos los Matches");
 }
 
 void printSubMenuPlayer(){   ///opciones del menu de Players
     printf("\nSUBMENU PLAYERS\n\n");
     printf("\n00- Atras");
-    printf("\n01- Cargar un jugador");
+    printf("\n01- Cargar un Player");
     printf("\n02- Mostrar listado de Players");
     printf("\n03- Mostrar listado de Players Activos");
     printf("\n04- Mostrar listado de Players Inactivos");
@@ -35,8 +35,8 @@ void printSubMenuPlayer(){   ///opciones del menu de Players
 void printSubMenuScores(){   ///opciones del menu de Scores
     printf("\nSUBMENU SCORES\n\n");
     printf("\n00- Atras");
-    printf("\n01- Mostrar Scores de un jugador");
-    printf("\n02- Mostrar Scores de todos los Player");
+    printf("\n01- Mostrar Scores de un Player");
+    printf("\n02- Mostrar todos los Scores");
 }
 int switchSubMenuScores(){   ///submenu de Scores
     int opcion;

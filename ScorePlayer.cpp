@@ -97,7 +97,6 @@ nodoListaScorePlayer * createNodoLista(scorePLayer dato){
 
 nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, nodoListaScorePlayer * nuevoNodo){
     nuevoNodo->siguiente = lista;
-    //nuevoNodo->dato = lista;
     return nuevoNodo;
 }
 

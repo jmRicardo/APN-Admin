@@ -267,7 +267,7 @@ double playedTime(char nickPlayer[]){   ///cantidad total de tiempo que jugo un 
     return total;
 }
 
-void cargaGameList(){
+void cargaGameList(){   ///funcion auxiliar de carga de GameList
     GameList aux;
     char control = 's';
     FILE * archi = fopen("MatchFile.dat", "ab");
