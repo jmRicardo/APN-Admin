@@ -6,10 +6,10 @@
 
 int main()
 {
-    /*loadPlayer("Pepe");
-    loadPlayer("Ariel");
-    loadPlayer("Woody");
-    Player lolo1 = traeme();
+    /*loadPlayer("Manko");
+    loadPlayer("Dario");
+    loadPlayer("Remi");*/
+    /*Player lolo1 = traeme();
     Player lolo2 = traemeotro();
     initMatch(lolo1, lolo2);*/
     /*cell miArray[20];
@@ -19,6 +19,7 @@ int main()
     //printf("\n--------------------------------\n");
     listaToArrayOfPlayers(miArray, cant);
     printArrayOfPlayersWithListas(miArray, cant);*/
+    ///cargaGameList();
 
 
     menu();

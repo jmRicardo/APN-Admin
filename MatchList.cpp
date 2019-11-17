@@ -122,7 +122,7 @@ nodoGameList * searchNodoForIdPlayer(nodoGameList * lista, int idPlayer){   ///b
     return aux;
 }
 
-int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo de listas
+int fromFileToArray(cell adl[], int dim){   ///pasa del archivo al arreglo de listas (con las listas en NULL)
     Player aux;
     int i = 0;
     FILE * archi = fopen("players.dat", "rb");
@@ -156,13 +156,13 @@ int searchPosInArray(cell adl[], int validos, int idPlayer){   ///busca la posic
     return pos;
 }
 
-int addToArray(cell adl[], int validos, int idPlayer){
+int addToArray(cell adl[], int validos, int idPlayer){   ///añade al arreglo
     adl[validos].dato.idPlayer = idPlayer;
     adl[validos].lista = inicLista();
     return validos + 1;
 }
 
-int alta(cell adl[], int validos, int idPlayer, GameList dato){
+int alta(cell adl[], int validos, int idPlayer, GameList dato){   ///agrega un dato de tipo GameList
     nodoGameList * aux = createNodo(dato);
     int pos = searchPosInArray(adl, validos, idPlayer);
     if (pos == - 1){
@@ -256,10 +256,10 @@ double playedTime(char nickPlayer[]){   ///cantidad total de tiempo que jugo un 
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             if (id == aux.player1.idPlayer){
-                total += aux.player1.matchTime;
+                total = total + aux.player1.matchTime;
                 }
-            if (id == aux.player2.matchTime){
-                total += aux.player2.matchTime;
+            if (id == aux.player2.idPlayer){
+                total = total + aux.player2.matchTime;
             }
         }
         fclose(archi);
@@ -267,7 +267,39 @@ double playedTime(char nickPlayer[]){   ///cantidad total de tiempo que jugo un 
     return total;
 }
 
+void cargaGameList(){
+    GameList aux;
+    char control = 's';
+    FILE * archi = fopen("MatchFile.dat", "ab");
+    if (archi){
+        while (control == 's'){
+            printf("\nId Match: ");
+            fflush(stdin);
+            scanf("%d", &aux.idMatch);
+            printf("\nId Player 1: ");
+            scanf("%d", &aux.player1.idPlayer);
+            printf("\nMatch time 1: ");
+            fflush(stdin);
+            scanf("%lf", &aux.player1.matchTime);
+            printf("\nWins 1: ");
+            scanf("%d", &aux.player1.wins);
+            printf("\nId Player 2: ");
+            scanf("%d", &aux.player2.idPlayer);
+            printf("\nMatch time 2: ");
+            fflush(stdin);
+            scanf("%lf", &aux.player2.matchTime);
+            printf("\nWins 2: ");
+            scanf("%d", &aux.player2.wins);
 
+            fwrite(&aux, sizeof(GameList), 1, archi);
+
+            printf("\nSeguir?");
+            fflush(stdin);
+            scanf("%c", &control);
+        }
+        fclose(archi);
+    }
+}
 
 
 
