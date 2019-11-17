@@ -9,11 +9,11 @@
 #include "ScorePlayer.h"
 
 
-typedef struct _NodoScorePLayerTree{
+typedef struct _NodoScorePlayerTree{
     scorePLayer dato;
-    struct _NodoScorePLayerTree * izquierda;
-    struct _NodoScorePLayerTree * derecha;
-}NodoScorePLayerTree;
+    struct _NodoScorePlayerTree * izquierda;
+    struct _NodoScorePlayerTree * derecha;
+}NodoScorePlayerTree;
 
 typedef struct _nodoListaScorePlayer{
     scorePLayer dato;
@@ -23,22 +23,25 @@ typedef struct _nodoListaScorePlayer{
 
 
 
-NodoScorePLayerTree * inicArbol();
-NodoScorePLayerTree * createNodoTree (scorePLayer dato);
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree * nuevo);
-NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato);
-void postorder(NodoScorePLayerTree * tree);
-void inorder(NodoScorePLayerTree * tree);
-void preorder(NodoScorePLayerTree * tree);
+NodoScorePlayerTree * inicArbol();
+NodoScorePlayerTree * createNodoTree (scorePLayer dato);
+NodoScorePlayerTree * insertTree(NodoScorePlayerTree * tree, NodoScorePlayerTree * nuevo);
+NodoScorePlayerTree * searchTree(NodoScorePlayerTree * tree, scorePLayer dato);
+void postorder(NodoScorePlayerTree * tree);
+void inorder(NodoScorePlayerTree * tree);
+void preorder(NodoScorePlayerTree * tree);
 void printScoreOfCertainPlayer(char nickPlayer[]);
+NodoScorePlayerTree * borrarNodo(NodoScorePlayerTree * arbol, int dato);
+NodoScorePlayerTree * nodoMasDerecha(NodoScorePlayerTree * arbol);
+NodoScorePlayerTree * nodoMasIzquierda(NodoScorePlayerTree * arbol);
 
 
-nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista);
+nodoListaScorePlayer * moveFromTreeToLista(NodoScorePlayerTree * tree, nodoListaScorePlayer * lista);
 
 nodoListaScorePlayer * inicListaScore();
 nodoListaScorePlayer * createNodoLista(scorePLayer dato);
 nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, nodoListaScorePlayer * nuevoNodo);
-NodoScorePLayerTree * fromFileToTree();
+NodoScorePlayerTree * fromFileToTree();
 
 #endif // SCOREPLAYER_H_INCLUDED
 

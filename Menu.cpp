@@ -48,7 +48,7 @@ int switchSubMenuScores(){   ///submenu de Scores
     int opcion;
     int flagPlayer;
     char playerToSearch[30];
-    NodoScorePLayerTree * barbol = inicArbol();
+    NodoScorePlayerTree * barbol = inicArbol();
     do{
         opcion = choseYourDestiny();
         switch(opcion){
@@ -71,7 +71,7 @@ int switchSubMenuScores(){   ///submenu de Scores
         case 2:
             system("cls");
             barbol = fromFileToTree();
-            postorder(barbol);
+            inorder(barbol);
             fflush(stdin);
             getchar();
             break;

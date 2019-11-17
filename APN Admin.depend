@@ -369,3 +369,51 @@
 	"Players.h"
 	<stdbool.h>
 
+1573840614 source:c:\users\usuario\desktop\apn-admin_15_11\main.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
+	<iostream>
+	"Menu.h"
+
+1573840614 c:\users\usuario\desktop\apn-admin_15_11\matchlist.h
+	<stdio.h>
+	<stdlib.h>
+	"Players.h"
+	<iostream>
+
+1573840618 c:\users\usuario\desktop\apn-admin_15_11\players.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+
+1573990971 c:\users\usuario\desktop\apn-admin_15_11\scoreplayer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	"MatchList.h"
+	"ScorePlayer.h"
+
+1573840614 c:\users\usuario\desktop\apn-admin_15_11\menu.h
+	"Players.h"
+	"MatchList.h"
+	"ScorePlayer.h"
+
+1573840614 source:c:\users\usuario\desktop\apn-admin_15_11\matchlist.cpp
+	"MatchList.h"
+	"Players.h"
+
+1573990986 source:c:\users\usuario\desktop\apn-admin_15_11\menu.cpp
+	"Menu.h"
+
+1573840618 source:c:\users\usuario\desktop\apn-admin_15_11\players.cpp
+	"Players.h"
+	<stdbool.h>
+
+1573990971 source:c:\users\usuario\desktop\apn-admin_15_11\scoreplayer.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
+

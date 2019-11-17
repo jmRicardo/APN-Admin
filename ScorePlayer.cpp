@@ -2,24 +2,21 @@
 #include "Players.h"
 #include "ScorePlayer.h"
 
-/*nodoGameList * inicLista(){
-    return NULL;
-}*/
 
-NodoScorePLayerTree * inicArbol(){
+NodoScorePlayerTree * inicArbol(){
 return NULL;
 }
 
-NodoScorePLayerTree * createNodoTree (scorePLayer dato){
+NodoScorePlayerTree * createNodoTree (scorePLayer dato){
 
-NodoScorePLayerTree * aux = (NodoScorePLayerTree*) malloc(sizeof(NodoScorePLayerTree));
+NodoScorePlayerTree * aux = (NodoScorePlayerTree*) malloc(sizeof(NodoScorePlayerTree));
 aux->dato = dato;
 aux->izquierda = NULL;
 aux->derecha = NULL;
 return aux;
 }
 
-NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree * nuevo){
+NodoScorePlayerTree * insertTree(NodoScorePlayerTree * tree, NodoScorePlayerTree * nuevo){
 
     if(tree == NULL)
         tree = nuevo;
@@ -32,9 +29,9 @@ NodoScorePLayerTree * insertTree(NodoScorePLayerTree * tree, NodoScorePLayerTree
     return tree;
 }
 
-NodoScorePLayerTree * searchTree(NodoScorePLayerTree * tree, scorePLayer dato){
+NodoScorePlayerTree * searchTree(NodoScorePlayerTree * tree, scorePLayer dato){
 
-NodoScorePLayerTree * reply = NULL;
+NodoScorePlayerTree * reply = NULL;
     if(tree){
         if(dato.idPlayer == tree->dato.idPlayer)
             reply = tree;
@@ -47,30 +44,36 @@ NodoScorePLayerTree * reply = NULL;
 return reply;
 }
 
-void postorder(NodoScorePLayerTree * tree){
+void postorder(NodoScorePlayerTree * tree){
     if(tree){
         postorder(tree->izquierda);
         postorder(tree->derecha);
+        printf("\n--------------------------------");
         printScore(tree->dato);
+        printf("\n--------------------------------");
     }
 }
 
-void inorder(NodoScorePLayerTree * tree){
+void inorder(NodoScorePlayerTree * tree){
     if (tree){
         inorder(tree->izquierda);
+        printf("\n--------------------------------");
         printScore(tree->dato);
+        printf("\n--------------------------------");
         inorder(tree->derecha);
     }
 }
-void preorder(NodoScorePLayerTree * tree){
+void preorder(NodoScorePlayerTree * tree){
     if (tree){
+        printf("\n--------------------------------");
         printScore(tree->dato);
+        printf("\n--------------------------------");
         preorder(tree->izquierda);
         preorder(tree->derecha);
     }
 }
 
-nodoListaScorePlayer * moveFromTreeToLista(NodoScorePLayerTree * tree, nodoListaScorePlayer * lista){
+nodoListaScorePlayer * moveFromTreeToLista(NodoScorePlayerTree * tree, nodoListaScorePlayer * lista){
     nodoListaScorePlayer * aux = NULL;
     if (tree){
         aux = createNodoLista(tree->dato);
@@ -98,15 +101,15 @@ nodoListaScorePlayer * addToBeginningListeScore(nodoListaScorePlayer * lista, no
     return nuevoNodo;
 }
 
-NodoScorePLayerTree * fromFileToTree(){
+NodoScorePlayerTree * fromFileToTree(){   ///funcion que pasa del archivo de Match a un arbol binario de Scores
     GameList aux;
-    NodoScorePLayerTree * barbol = inicArbol();
+    NodoScorePlayerTree * barbol = inicArbol();
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
-            NodoScorePLayerTree * helper = createNodoTree(aux.player1);
+            NodoScorePlayerTree * helper = createNodoTree(aux.player1);
             barbol = insertTree(barbol, helper);
-            NodoScorePLayerTree * helper2 = createNodoTree(aux.player2);
+            NodoScorePlayerTree * helper2 = createNodoTree(aux.player2);
             barbol = insertTree(barbol, helper2);
         }
         fclose(archi);
@@ -114,10 +117,10 @@ NodoScorePLayerTree * fromFileToTree(){
     return barbol;
 }
 
-void printScoreOfCertainPlayer(char nickPlayer[]){
+void printScoreOfCertainPlayer(char nickPlayer[]){   ///funcion que imprime el Score de un cierto jugador
     GameList aux;
     int id = searchiDFromName(nickPlayer);
-    NodoScorePLayerTree * barbol = inicArbol();
+    NodoScorePlayerTree * barbol = inicArbol();
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
@@ -133,7 +136,65 @@ void printScoreOfCertainPlayer(char nickPlayer[]){
     }
 }
 
+NodoScorePlayerTree * borrarNodo(NodoScorePlayerTree * arbol, int dato){   ///borra nodo a partir de un Id
+    if (arbol){
+        if (arbol->dato.idPlayer == dato){
+            NodoScorePlayerTree * aux = NULL;
+            if (arbol->izquierda){
+                aux = nodoMasDerecha(arbol->izquierda);
+                arbol->dato.idPlayer = aux->dato.idPlayer;
+                arbol->izquierda = borrarNodo(arbol->izquierda, aux->dato.idPlayer);
+            }
+            else if(arbol->derecha){
 
+                aux = nodoMasIzquierda(arbol->derecha);
+                arbol->dato.idPlayer = aux->dato.idPlayer;
+                arbol->derecha = borrarNodo(arbol->derecha, aux->dato.idPlayer);
+            }
+            else
+            {
+                free(arbol);
+                arbol = NULL;
+            }
+        }
+        else if (dato < arbol->dato.idPlayer)
+        {
+            arbol->izquierda = borrarNodo(arbol->izquierda, dato);
+        }
+        else
+        {
+           arbol->derecha = borrarNodo(arbol->derecha, dato);
+        }
+
+    }
+    return arbol;
+}
+
+
+
+
+
+NodoScorePlayerTree * nodoMasDerecha(NodoScorePlayerTree * arbol)    ///funcion auxiliar para la de borrar un nodo
+{
+    if (arbol){
+        if (arbol->derecha)
+            nodoMasDerecha(arbol->derecha);
+        else
+            return arbol;
+    }
+}
+
+NodoScorePlayerTree * nodoMasIzquierda(NodoScorePlayerTree * arbol)   ///funcion auxiliar para la de borrar un nodo, otra forma de hacerlo (la correcta segun el profe xd)
+{
+    NodoScorePlayerTree * rta=NULL;
+    if (arbol){
+        if (arbol->izquierda)
+            rta=nodoMasIzquierda(arbol->izquierda);
+        else
+            rta= arbol;
+    }
+    return rta;
+}
 
 
 
