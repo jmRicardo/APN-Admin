@@ -68,7 +68,9 @@ void printFilePlayers()   ///imprime por pantalla todos los players desde el arc
     {
         while (fread(&aux,sizeof(Player),1,archi)>0)
         {
+            printf("\n--------------------");
             printPlayer(aux);
+            printf("\n--------------------");
         }
         fclose(archi);
     }
@@ -95,7 +97,9 @@ void printActiveOrInactivePlayers(bool dato){   ///imprime Players activos o ina
     if (archi){
         while (fread(&aux, sizeof(Player), 1, archi) > 0){
             if (aux.active == dato){
+                printf("\n--------------------");
                 printPlayer(aux);
+                printf("\n--------------------");
             }
         }
         fclose(archi);
@@ -136,7 +140,9 @@ int fromFileToArrayOfPlayers(Player a[], int dim){   ///pasar del archivo a un a
 void printArrayOfPlayersPlayers(Player a[], int cant){   ///imprimimos un arreglo de Players
     int i = 0;
     for (i=0; i<cant; i++){
+        printf("\n--------------------");
         printPlayer(a[i]);
+        printf("\n--------------------");
     }
 }
 
