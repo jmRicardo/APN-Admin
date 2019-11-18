@@ -58,6 +58,7 @@ void printMatchFromAplayer(char nickPlayer[]);
 int matchesPlayed(char nickPlayer[]);
 double playedTime(char nickPlayer[]);
 void cargaGameList();
+int totalWinsOfAplayer(char nickPlayer[]);
 
 
 

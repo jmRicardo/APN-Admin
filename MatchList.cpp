@@ -34,14 +34,12 @@ void printScore(scorePLayer score){   ///funcion que muestra un solo Score
     printf("\n Id Player: %d", score.idPlayer);
     printf("\nMatch Time: %lf", score.matchTime);
     printf("\nWins      : %d", score.wins);
-    ///printf("\n--------------------------------------------\n");
 }
 
 void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
     printf("\n  Id Match: |%d|", match.idMatch);
     printScore(match.player1);
     printScore(match.player2);
-    ///printf("\n--------------------------------------------\n");
 }
 
 void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas jugadas
@@ -50,7 +48,7 @@ void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas 
     if (archi){
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             printMatch(aux);
-            printf("\n");
+            printf("\n--------------------------------------------");
         }
         fclose(archi);
     }
@@ -194,12 +192,16 @@ int listaToArrayOfPlayers(cell adl[], int cant){   ///pasa del archivo de Matche
 void printArrayOfPlayersWithListas(cell adl[], int cant){   ///muestra el arreglo de listas
     int i = 0;
     for (i=0; i<cant; i++){
-        printf("\n--------------------------------------------\n");
+        printf("\n--------------------------------------------");
         printPlayer(adl[i].dato);
+        printf("\n--------------------");
+        printf("\nMatches de: %s", adl[i].dato.nick);
+        printf("\n--------------------");
         if (adl[i].lista){
             nodoGameList * aux = adl[i].lista;
             while (aux){
                 printMatch(aux->dato);
+                printf("\n--------------------");
                 aux = aux->siguiente;
             }
         }
@@ -213,7 +215,9 @@ void printMatchFromAnId(int iD){   ///muestra un Match buscado por su Id
     if (archi){
         fseek(archi, ((iD - 1)*(sizeof(GameList))), SEEK_SET);
         fread(&aux, sizeof(GameList), 1, archi);
+        printf("\n--------------------------------------------");
         printMatch(aux);
+        printf("\n--------------------------------------------");
         fclose(archi);
     }
 }
@@ -226,6 +230,7 @@ void printMatchFromAplayer(char nickPlayer[]){   ///muestra todos los Matches de
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             if (aux.player1.idPlayer == id || aux.player2.idPlayer == id){
                 printMatch(aux);
+                printf("\n--------------------------------------------");
             }
         }
         fclose(archi);
@@ -301,7 +306,24 @@ void cargaGameList(){   ///funcion auxiliar de carga de GameList
     }
 }
 
-
+int totalWinsOfAplayer(char nickPlayer[]){    ///funcion que devuelve el total de wins que un Player tiene
+    GameList aux;
+    int id = searchiDFromName(nickPlayer);
+    int total = 0;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+            if (id == aux.player1.idPlayer){
+                total = total + aux.player1.wins;
+            }
+            if (id == aux.player2.idPlayer){
+                total = total + aux.player2.wins;
+            }
+        }
+        fclose(archi);
+    }
+    return total;
+}
 
 
 

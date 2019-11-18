@@ -40,6 +40,8 @@ void printSubMenuScores(){   ///opciones del menu de Scores
 }
 int switchSubMenuScores(){   ///submenu de Scores
     int opcion;
+    double totalTime;
+    int totalWins;
     int flagPlayer;
     char playerToSearch[30];
     NodoScorePlayerTree * barbol = inicArbol();
@@ -55,9 +57,12 @@ int switchSubMenuScores(){   ///submenu de Scores
             if (flagPlayer){
                 printf("\nEl jugador no existe\n");
             }else{
-                printf("\n--------------------------------\n");
+                totalTime = playedTime(playerToSearch);
+                totalWins = totalWinsOfAplayer(playerToSearch);
+                printf("\n--------------------------------");
                 printScoreOfCertainPlayer(playerToSearch);
-                printf("\n--------------------------------\n");
+                printf("\n\n\nTiempo total que el Player jugo: |%lf|", totalTime);
+                printf("\nWins totales que el Player tiene: |%d|\n", totalWins);
             }
             fflush(stdin);
             getchar();
@@ -265,9 +270,7 @@ int switchSubMenuPlayer(){   ///submenu de Players
             system("cls");
             validos = fromFileToArray(adl, 30);
             validos = listaToArrayOfPlayers(adl, validos);
-            //printf("\n--------------------------------");
             printArrayOfPlayersWithListas(adl, validos);
-            //printf("\n--------------------------------\n");
             fflush(stdin);
             getchar();
             break;

@@ -125,9 +125,11 @@ void printScoreOfCertainPlayer(char nickPlayer[]){   ///funcion que imprime el S
         while (fread(&aux, sizeof(GameList), 1, archi) > 0){
             if (id == aux.player1.idPlayer){
                 printScore(aux.player1);
+                printf("\n--------------------------------");
             }else{
                 if (id == aux.player2.idPlayer){
                     printScore(aux.player2);
+                    printf("\n--------------------------------");
                 }
             }
         }
