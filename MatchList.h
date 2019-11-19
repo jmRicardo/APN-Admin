@@ -59,6 +59,8 @@ int matchesPlayed(char nickPlayer[]);
 double playedTime(char nickPlayer[]);
 void cargaGameList();
 int totalWinsOfAplayer(char nickPlayer[]);
+int whoWonTheScreen(double timePassed, char nickPlayer[]);
+int whoWonTheMatch();
 
 
 

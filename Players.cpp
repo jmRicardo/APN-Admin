@@ -12,10 +12,10 @@ bool loadPlayer(char playerNick[]){
         if (archi)
         {
             aux.idPlayer = id;
-            strcpy(aux.nick,playerNick);
+            strcpy(aux.nick, playerNick);
             aux.active = true;
             aux.totalTime = 0;
-            fwrite(&aux,sizeof(Player),1,archi);
+            fwrite(&aux, sizeof(Player), 1, archi);
         }
         fclose(archi);
     }

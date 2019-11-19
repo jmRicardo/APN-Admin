@@ -20,6 +20,10 @@ int main()
     listaToArrayOfPlayers(miArray, cant);
     printArrayOfPlayersWithListas(miArray, cant);*/
     ///cargaGameList();
+    //int j = whoWonTheScreen(15, "dario");
+    //int qwerty = whoWonTheMatch();
+    //printf("\nSSSSSSSSSSSSSS%d\n", qwerty);
+    //system("pause");
 
 
     menu();

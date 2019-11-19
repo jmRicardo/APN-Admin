@@ -36,13 +36,13 @@ void printScore(scorePLayer score){   ///funcion que muestra un solo Score
     printf("\nWins      : %d", score.wins);
 }
 
-void printMatch(GameList match){   ///funcion auxiliar que muestra una sola partida
+void printMatch(GameList match){   ///funcion auxiliar que muestra un solo Match
     printf("\n  Id Match: |%d|", match.idMatch);
     printScore(match.player1);
     printScore(match.player2);
 }
 
-void printMatchFile(){   ///funcion que muestra por pantalla todas las partidas jugadas
+void printMatchFile(){   ///funcion que muestra por pantalla todos los Matches jugados
     GameList aux;
     FILE * archi = fopen("MatchFile.dat", "rb");
     if (archi){
@@ -325,9 +325,49 @@ int totalWinsOfAplayer(char nickPlayer[]){    ///funcion que devuelve el total d
     return total;
 }
 
+int whoWonTheScreen(double timePassed, char nickPlayer[]){   ///funcion que carga el tiempo transcurrido de una pantalla y quien gano esa pantalla
+    int idP = searchiDFromName(nickPlayer);
+    GameList aux;
+    FILE * archi = fopen("MatchFile.dat", "r+b");
+    if (archi){
+            fseek(archi,-1*sizeof(GameList),SEEK_END);   ///me paro en el ultimo Match
+            fread(&aux, sizeof(GameList), 1, archi);    ///lo leo y le sumo el win al Player que le corresponda y el tiempo a ambos
+        if (idP == aux.player1.idPlayer){
+            aux.player1.matchTime += timePassed;
+            aux.player2.matchTime += timePassed;
+            aux.player1.wins ++;
+            fseek(archi,-1*sizeof(GameList),SEEK_END);
+            fwrite(&aux, sizeof(GameList), 1, archi);
+        }else{
+            aux.player1.matchTime += timePassed;
+            aux.player2.matchTime += timePassed;
+            aux.player2.wins ++;
+            fseek(archi,-1*sizeof(GameList),SEEK_END);
+            fwrite(&aux, sizeof(GameList), 1, archi);
+        }
+        fclose(archi);
+    }
+    return idP;
+}
 
-
-
+int whoWonTheMatch(){    ///funcion que devuelve el Id del Player que gano el ultimo Match
+    int rta;
+    GameList aux;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+        fseek(archi, -1*sizeof(GameList), SEEK_END);
+        fread(&aux, sizeof(GameList), 1, archi);
+        int idP1 = aux.player1.idPlayer;
+        int idP2 = aux.player2.idPlayer;
+        if (aux.player1.wins > aux.player2.wins){
+            rta = idP1;
+        }else{
+            rta = idP2;
+        }
+        fclose(archi);
+    }
+    return rta;
+}
 
 
 
