@@ -173,6 +173,17 @@ Player gPlayerName(char name[30])
 
 }
 
+Player nameFromID(int id)
+{
+    Player aux;
+    FILE * archi = fopen("players.dat", "rb");
+    if (archi){
+        while (fread((&aux), sizeof(Player), 1, archi) > 0 && id!=aux.idPlayer){}
+        fclose(archi);
+    }
+    return aux;
+}
+
 
 
 
