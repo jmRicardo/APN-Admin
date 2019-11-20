@@ -161,7 +161,17 @@ int searchiDFromName(char nickPlayer[]){   ///funcion auxiliar que devuelve el i
     return iD;
 }
 
+Player gPlayerName(char name[30])
+{
+    Player aux;
+    FILE * archi = fopen("players.dat", "rb");
+    if (archi){
+        while (fread((&aux), sizeof(Player), 1, archi) > 0 && strcmpi(name,aux.nick)){}
+        fclose(archi);
+    }
+    return aux;
 
+}
 
 
 

@@ -27,6 +27,7 @@ void insertion(Player a[], int cant);
 int fromFileToArrayOfPlayers(Player a[], int dim);
 void printArrayOfPlayersPlayers(Player a[], int cant);
 int searchiDFromName(char nickPlayer[]);
+Player gPlayerName(char name[30]);
 
 
 
