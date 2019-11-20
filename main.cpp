@@ -24,11 +24,11 @@ int main()
     //int qwerty = whoWonTheMatch();
     //printf("\nSSSSSSSSSSSSSS%d\n", qwerty);
     //system("pause");
-    char elcho[30] = "remi";
+    /*char elcho[30] = "remi";
     Player aux = gPlayerName(elcho);
-    printf("%s",aux.nick);
+    printf("%s",aux.nick);*/
 
-    //menu();
+    menu();
     return 0;
 }
 

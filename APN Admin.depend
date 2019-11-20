@@ -419,3 +419,44 @@
 	"Players.h"
 	"ScorePlayer.h"
 
+1574274959 source:c:\users\flosc\onedrive\documentos\github\apn-admin\matchlist.cpp
+	"MatchList.h"
+	"Players.h"
+
+1574274959 c:\users\flosc\onedrive\documentos\github\apn-admin\matchlist.h
+	<stdio.h>
+	<stdlib.h>
+	"Players.h"
+	<iostream>
+
+1574274959 c:\users\flosc\onedrive\documentos\github\apn-admin\players.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+
+1574274959 source:c:\users\flosc\onedrive\documentos\github\apn-admin\menu.cpp
+	"Menu.h"
+
+1574274959 c:\users\flosc\onedrive\documentos\github\apn-admin\menu.h
+	"Players.h"
+	"MatchList.h"
+	"ScorePlayer.h"
+
+1574274959 c:\users\flosc\onedrive\documentos\github\apn-admin\scoreplayer.h
+	<stdio.h>
+	<stdlib.h>
+	<iostream>
+	<string.h>
+	"MatchList.h"
+	"ScorePlayer.h"
+
+1574274959 source:c:\users\flosc\onedrive\documentos\github\apn-admin\players.cpp
+	"Players.h"
+	<stdbool.h>
+
+1574274959 source:c:\users\flosc\onedrive\documentos\github\apn-admin\scoreplayer.cpp
+	"MatchList.h"
+	"Players.h"
+	"ScorePlayer.h"
+
