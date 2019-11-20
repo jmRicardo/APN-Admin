@@ -61,6 +61,10 @@ void cargaGameList();
 int totalWinsOfAplayer(char nickPlayer[]);
 int whoWonTheScreen(double timePassed, char nickPlayer[]);
 int whoWonTheMatch();
+int lowestPos(scorePLayer a[], int validos, int pos);
+void seleccion(scorePLayer a[], int validos);
+int fromFileToArrayOfScores(scorePLayer a[], int dim);
+void printArrayOfScores(scorePLayer a[], int validos);
 
 
 

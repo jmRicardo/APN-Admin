@@ -29,8 +29,8 @@ int searchLastID()       /// se para en el ultimo bloque de archivo y retorna su
     FILE * archi = fopen("players.dat", "rb");
     if (archi)
     {
-        if (fseek(archi,-1*sizeof(Player),SEEK_END))
-            fread(&aux,sizeof(Player),1,archi);
+            fseek(archi, -1*sizeof(Player), SEEK_END);    ///aca saque un if suelto q no se porque estaba
+            fread(&aux, sizeof(Player), 1, archi);
             id = aux.idPlayer;
     }
     fclose(archi);

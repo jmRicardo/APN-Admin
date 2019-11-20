@@ -30,6 +30,7 @@ NodoScorePlayerTree * searchTree(NodoScorePlayerTree * tree, scorePLayer dato);
 void postorder(NodoScorePlayerTree * tree);
 void inorder(NodoScorePlayerTree * tree);
 void preorder(NodoScorePlayerTree * tree);
+NodoScorePlayerTree * fromFileToTree();
 void printScoreOfCertainPlayer(char nickPlayer[]);
 NodoScorePlayerTree * borrarNodo(NodoScorePlayerTree * arbol, int dato);
 NodoScorePlayerTree * nodoMasDerecha(NodoScorePlayerTree * arbol);

@@ -37,6 +37,7 @@ void printSubMenuScores(){   ///opciones del menu de Scores
     printf("\n00- Atras");
     printf("\n01- Mostrar Scores de un Player");
     printf("\n02- Mostrar todos los Scores");
+    printf("\n03- Mostrar High Scores");
 }
 int switchSubMenuScores(){   ///submenu de Scores
     int opcion;
@@ -44,6 +45,8 @@ int switchSubMenuScores(){   ///submenu de Scores
     int totalWins;
     int flagPlayer;
     char playerToSearch[30];
+    scorePLayer miArray[40];
+    int validos;
     NodoScorePlayerTree * barbol = inicArbol();
     do{
         opcion = choseYourDestiny();
@@ -71,6 +74,16 @@ int switchSubMenuScores(){   ///submenu de Scores
             system("cls");
             barbol = fromFileToTree();
             inorder(barbol);
+            fflush(stdin);
+            getchar();
+            break;
+        case 3:
+            system("cls");
+            validos = fromFileToArrayOfScores(miArray, 40);
+            printf("\n--------------------------------");
+            seleccion(miArray, validos);
+            printArrayOfScores(miArray, validos);
+            printf("\n--------------------------------");
             fflush(stdin);
             getchar();
             break;

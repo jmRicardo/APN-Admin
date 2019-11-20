@@ -369,6 +369,75 @@ int whoWonTheMatch(){    ///funcion que devuelve el Id del Player que gano el ul
     return rta;
 }
 
+int lowestPos(scorePLayer a[], int validos, int pos){   ///funcion auxiliar para el metodo de seleccion
+    scorePLayer menor = a[pos];
+    int posMenor = pos;
+    int i = pos + 1;
+    while (i < validos){
+        if (menor.wins > a[i].wins){
+            menor = a[i];
+            posMenor = i;
+        }
+        i++;
+    }
+    return posMenor;
+}
+
+void seleccion(scorePLayer a[], int validos){   ///seleccion a partir de la strcut Scores
+    int i = 0;
+    scorePLayer aux;
+    int posMenor;
+    while (i < validos-1){
+        posMenor = lowestPos(a, validos, i);
+        aux = a[posMenor];
+        a[posMenor] = a[i];
+        a[i] = aux;
+        i++;
+    }
+}
+
+int fromFileToArrayOfScores(scorePLayer a[], int dim){   ///funcion que pasa del archivo a un arreglo de Scores
+    GameList aux;
+    int lastID = searchLastID();
+    int i = 0;
+    FILE * archi = fopen("MatchFile.dat", "rb");
+    if (archi){
+            while (i < lastID){
+                a[i].idPlayer = i+1;
+                a[i].matchTime = 0;
+                a[i].wins = 0;
+                while (fread(&aux, sizeof(GameList), 1, archi) > 0){
+                    if (a[i].idPlayer == aux.player1.idPlayer){
+                        a[i].matchTime += aux.player1.matchTime;
+                        a[i].wins += aux.player1.wins;
+                    }
+                    if (a[i].idPlayer == aux.player2.idPlayer){
+                        a[i].matchTime += aux.player2.matchTime;
+                        a[i].wins += aux.player2.wins;
+                    }
+                }
+                rewind(archi);
+                i++;
+            }
+        fclose(archi);
+    }
+    return i;
+}
+
+void printArrayOfScores(scorePLayer a[], int validos){    ///funcion que imprime un arreglo de Scores
+    int i = 0;
+    for (i=0; i<validos; i++){
+        printf("\n--------------------");
+        printScore(a[i]);
+        printf("\n--------------------");
+    }
+}
+
+
+
+
+
+
 
 
 
